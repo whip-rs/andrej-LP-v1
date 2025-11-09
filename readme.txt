@@ -1,4 +1,4 @@
-CREATE VITE-VUE:
+HOW TO CREATE VITE-VUE:
 
 npm create vue@latest
 

@@ -1,7 +1,7 @@
 <template lang="pug">
 
 	.flex.cc.col
-		h1 GET HARD
+		h1 Root Vue Boilerplate
 		//- IMG TEST
 		img(src="@/assets/img/imgTest.jpg" alt="test").no-click
 		icoBot.ico
