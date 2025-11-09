@@ -1,0 +1,29 @@
+{
+  "name": "core-vue",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --config 0-cfg/vite.config.js --open",
+    "build": "vite --config 0-cfg/vite.config.js build",
+    "preview": "vite --config 0-cfg/vite.config.js preview"
+  },
+  "dependencies": {
+    "vue": "^3.5.22"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "pug": "^3.0.3",
+    "stylus": "^0.64.0",
+    "stylus-loader": "^8.1.2",
+    "vite": "^7.1.11",
+    "vite-plugin-pug": "^0.4.1",
+    "vite-plugin-vue-devtools": "^8.0.3",
+    "vite-svg-loader": "^5.1.0"
+  }
+}

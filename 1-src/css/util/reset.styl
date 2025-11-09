@@ -1,0 +1,94 @@
+// ROUGH RESET
+*, *::before, *::after
+	box-sizing border-box
+	margin 0
+	padding 0
+	border 0
+	z-index 0
+	background none
+	outline none
+	
+	// FONT SETTINGS
+	font: inherit
+	font-size 100%
+	font-weight normal
+	vertical-align baseline
+	// text-wrap: pretty
+	
+	// GLOBAL POINTER EVENTS (if setting explicit)
+	// pointer-events none // <—
+
+// GLOBAL DEFAULTS
+html, body
+	font-size $rem
+	-webkit-font-smoothing antialiased
+	-webkit-tap-highlight-color rgba(0, 0, 0, 0)
+	-webkit-text-size-adjust 100%
+	text-rendering optimizeLegibility
+	// scroll-behavior smooth
+	// min-height 100%
+
+CLEARFIX
+.row:before, .row:after
+	content ""
+	clear both
+	display table
+
+// // PREVENT OVERFLOW
+// html, body
+// 	max-width 100%
+// 	overflow-x hidden
+
+button, input[type="button"], input[type="submit"], input[type="reset"]
+	-webkit-appearance: none
+	appearance: none
+	cursor: pointer
+
+input, textarea
+	-webkit-appearance: none
+	appearance: none
+	padding: 0
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section
+	display block
+
+table
+	border-collapse: collapse
+	border-spacing: 0
+
+hr
+	width 100%
+	display block
+
+ul
+	list-style-type: disc
+	margin-left .75rem
+	padding-left: .75rem
+	// ::marker
+	// 	color red
+		
+// blockquote, q
+// 	quotes: none
+// 	&:before, &:after
+// 		content: ''
+// 		content: none
+
+*:focus
+	outline none
+
+[hidden]
+	display none
+
+// Disabled for performance - let browser handle scroll behavior
+// @media (prefers-reduced-motion: no-preference)
+// 	:root
+// 		scroll-behavior: smooth
+
+// body
+// 	// INNER PAGE PADDING
+// 	margin 0 0 415px
+// 	// max-width 100%
+// 	padding 1rem
+// 	padding-bottom 0px
+// 	 & .footer-copyright
+// 		  margin-bottom 15px
