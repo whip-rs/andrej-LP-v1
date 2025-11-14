@@ -1,0 +1,59 @@
+a.link
+	color white
+
+a.btn
+	text-decoration none
+	max-width calc(100% - 2px)
+	padding 1rem
+	border-radius .25rem
+	transition: .3s
+	display: flex
+	align-items: center
+	font-size 1.125rem
+	user-select none
+	draggable: false
+	user-drag: none
+	-webkit-user-drag: none
+	-moz-user-select: none
+	-webkit-user-select: none
+	-ms-user-select: none
+	backdrop-filter blur(4px)
+
+a.btn.fill
+	// border: 1px solid #a7885b
+	border: 1px solid #a7885b80
+	color: #a7885b
+	background-color #a88a5d21
+	letter-spacing: .1rem
+	justify-content: space-between
+	span:nth-child(2)
+		margin-right .5rem
+	span:nth-child(2)
+		transition .3s
+	&:hover
+		color black
+		background-color #a7885b
+		// border-color #aaa
+		box-shadow: inset 0 0 .05rem .0725rem black
+		span:nth-child(2)
+			margin-right 0
+	&:active
+		background-color #a88a5d66
+		color: #a7885b
+		border-color #a7885b
+
+a.btn.void
+	color white
+	// border: 1px solid #666;
+	border: 1px solid #ffffff54
+	cursor pointer
+	&:hover
+		color black
+		background-color: white
+		border-color: white
+		border: 1px solid #aaa
+		span:nth-child(2)
+			margin-right 0
+	&:active
+		background-color #111
+		color: white

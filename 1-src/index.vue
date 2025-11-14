@@ -1,33 +1,30 @@
 <template lang="pug">
-
-	.flex.cc.col
-		h1 Root Vue Boilerplate
-		//- IMG TEST
-		img(src="@/assets/img/imgTest.jpg" alt="test").no-click
-		icoBot.ico
-
-	</template> <!-- // -->
+	modal
+	hero
+	analize
+	uvod
+	about
+	world
+	testimonials
+	order
+	footah
+	</template>
+<!-- // -->
 
 <style lang="stylus" scoped>
+	</style>
 
-	.flex
-		width 100vw
-		height 100vh
-		gap 1rem
-	h1
-		font-weight bold
-		font-size 2rem
-	img
-		height 240px
-	.ico
-		height 4rem
-		fill red
-		
-	</style> <!-- // -->
+<!-- // -->
 	
 <script setup>
-
-	// IMG TEST
-	import IcoBot from '@/assets/svg/bot.svg'
-
+	import modal from './components/modal.vue'
+	import hero from './components/hero.vue'
+	import analize from './components/analize.vue'
+	import uvod from './components/uvod.vue'
+	import about from './components/about.vue'
+	import world from './components/world.vue'
+	import testimonials from './components/testimonials.vue'
+	import order from './components/order.vue'
+	import footah from './components/footer.vue'
 	</script>
+

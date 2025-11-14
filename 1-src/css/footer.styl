@@ -1,0 +1,104 @@
+footer
+	padding-top 1rem	
+	display block
+	border-top 1px solid #313131
+	z-index 0
+	@media screen and (min-width $xs)
+		.soc-media
+			display flex
+			flex-direction column
+		.copyright
+			br
+				display inline-block
+		h4
+			margin-top .5rem
+			margin-bottom .75rem
+		a.ico
+			width 100%
+	@media screen and (min-width 480px)
+		.soc-media
+			display flex
+			flex-direction row
+			max-width 768px
+			margin-left auto
+			margin-right auto
+			br
+				display inline-block
+		.copyright
+			br
+				display none	
+	a.ico
+		display block
+		opacity .25
+		display flex
+		flex-direction: column
+		align-items: center
+		margin-bottom .5rem
+		margin-top 1rem
+		text-decoration: none
+		user-select none
+		draggable: false
+		user-drag: none
+		-webkit-user-drag: none
+		-moz-user-select: none
+		-webkit-user-select: none
+		-ms-user-select: none		
+		p
+			text-transform uppercase
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+			font-size 16px
+			letter-spacing .2rem
+			margin-top .5rem
+			margin-bottom 0
+		img
+			height 4rem
+			width auto
+			margin-left auto
+			margin-right auto
+		transition: .3s
+		&:hover
+			opacity 1
+	.copyright
+		background-color black
+		border-top 1px solid #313131
+		padding 1rem
+		p
+			text-align: center
+			font-size 1rem
+			margin 0
+			color #888
+
+
+// .soc-media
+// 	display flex
+// 	flex-direction row
+// 	max-width 768px
+// 	margin-left auto
+// 	margin-right auto
+// br
+// display inline-block
+// a.ico
+// 	display block
+// svg
+// 	// opacity .25
+// 	display flex
+// 	flex-direction: column
+// 	align-items: center
+// 	margin-bottom .5rem
+// 	margin-top 1rem
+// 	text-decoration: none
+// 	user-select none
+// 	draggable: false
+// 	user-drag: none
+// 	-webkit-user-drag: none
+// 	-moz-user-select: none
+// 	-webkit-user-select: none
+// 	-ms-user-select: none		
+// 	width 4rem
+// a p
+// 	text-transform uppercase
+// 	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+// 	font-size 16px
+// 	letter-spacing .2rem
+// 	margin-top .5rem
+// 	margin-bottom 0
