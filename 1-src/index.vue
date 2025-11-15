@@ -1,6 +1,7 @@
 <template lang="pug">
 	modal
 	hero
+
 	analize
 	uvod
 	about
@@ -18,8 +19,9 @@
 <!-- // -->
 	
 <script setup>
-	import modal from './components/modal.vue'
+	import modal from './components/modal-content/modal.vue'
 	import hero from './components/hero.vue'
+	
 	import analize from './components/analize.vue'
 	import uvod from './components/uvod.vue'
 	import about from './components/about.vue'

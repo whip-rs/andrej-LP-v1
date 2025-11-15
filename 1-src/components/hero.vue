@@ -13,7 +13,7 @@
 					//- li Мрачна Фантастика
 				a.btn.void.modal-call(data-src="krvavo-praskozorje.html") Прочитај "Крваво праскозорје" бесплатно
 				a(href="#order-now").btn.fill <span>Наручи одмах</span><span>❯</span>
-				p.micro И доживи себе и свет на један потпуно нов и необичан начин.
+				p.micro И доживи себе и свет на један нов, необичан начин.
 
 			//- .col-12.addons
 				p.tc Бесплатна достава на кућну адресу
@@ -52,6 +52,7 @@
 		flex-direction column
 	a.btn
 		height 3.5rem
+		box-shadow: 0px 0.5rem 0.5rem 0rem #00000080;
 	a.btn.fill
 		border: 1px solid #a7885b80
 		color: #a7885b
@@ -59,7 +60,7 @@
 		letter-spacing: 0.1rem
 	a.btn.void
 		color: #fff
-		border: 1px solid #ffffff33
+		border: 1px solid #828282a8
 		background-color: #ffffff08
 	@media screen and (min-width: $xs)
 		.hero
