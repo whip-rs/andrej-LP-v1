@@ -11,7 +11,7 @@
 					li Психологија
 					li Духовност
 					//- li Мрачна Фантастика
-				a.btn.void.modal-call(data-src="krvavo-praskozorje.html") Прочитај "Крваво праскозорје" бесплатно
+				a.btn.void(@click="$emit('open-modal', 'krvavo-praskozorje')") Прочитај "Крваво праскозорје" бесплатно
 				a(href="#order-now").btn.fill <span>Наручи одмах</span><span>❯</span>
 				p.micro И доживи себе и свет на један нов, необичан начин.
 
