@@ -5,8 +5,8 @@
 		.col-lg-4
 			img(src="/assets/img/liber-1-2.webp")
 			h4 Књиге 1 и 2 (спојено):
-			a(href="sms:+381641764833?body=Поздрав,%20наручујем%20књиге%201%20и%202%20на:%0A%0AИме_и_Презиме%0AAдреса%0AГрад_и_поштански_број%0AБрој_телефона%0A%0AХвала!").btn.fill.mob-only Наручи СМС-ом <span>❯</span>
-			a(href="mailto:nenad.s@zoho.com?body=Поздрав,%20наручујем%20књиге%201%20и%202%20на:%0A%0AИме_и_Презиме%0AAдреса%0AГрад_и_поштански_број%0AБрој_телефона%0A%0AХвала!").btn.fill.desk-only Наручи е-мејлом <span>❯</span>
+			a(href="").btn.fill.mob-only Наручи СМС-ом <span>❯</span>
+			a(href="").btn.fill.desk-only Наручи е-мејлом <span>❯</span>
 			ul
 				li 2400 РСД <span>+ поштарина</span>
 				li Тврде корице са "кошуљицом"
@@ -16,8 +16,8 @@
 		.col-lg-4
 			img(src="/assets/img/liber-3.webp")
 			h4 Само књига 3:
-			a(href="sms:+381641764833?body=Поздрав,%20наручујем%20књигу%203%20на:%0A%0AИме_и_Презиме%0AAдреса%0AГрад_и_поштански_број%0AБрој_телефона%0A%0AХвала!").btn.fill.mob-only Наручи СМС-ом <span>❯</span>
-			a(href="mailto:nenad.s@zoho.com?body=Поздрав,%20наручујем%20књигу%203%20на:%0A%0AИме_и_Презиме%0AAдреса%0AГрад_и_поштански_број%0AБрој_телефона%0A%0AХвала!").btn.fill.desk-only Наручи е-мејлом <span>❯</span>
+			a(href="").btn.fill.mob-only Наручи СМС-ом <span>❯</span>
+			a(href="").btn.fill.desk-only Наручи е-мејлом <span>❯</span>
 			ul
 				li 2400 РСД <span>+ поштарина</span>
 				li Тврде корице са "кошуљицом"
@@ -25,8 +25,8 @@
 		.col-lg-4
 			img(src="/assets/img/liber-combo.webp")
 			h4 Комплет књига 1-3:
-			a(href="sms:+381641764833?body=Поздрав,%20наручујем%20%20књиге%201-3%20на:%0A%0AИме_и_Презиме%0AAдреса%0AГрад_и_поштански_број%0AБрој_телефона%0A%0AХвала!").btn.fill.mob-only Наручи СМС-ом <span>❯</span>
-			a(href="mailto:nenad.s@zoho.com?body=Поздрав,%20наручујем%20%20књиге%201-3%20на:%0A%0AИме_и_Презиме%0AAдреса%0AГрад_и_поштански_број%0AБрој_телефона%0A%0AХвала!").btn.fill.desk-only Наручи е-мејлом <span>❯</span>
+			a(href="").btn.fill.mob-only Наручи СМС-ом <span>❯</span>
+			a(href="").btn.fill.desk-only Наручи е-мејлом <span>❯</span>
 			ul
 				li <span class="cross">4400 РСД</span> 3900 РСД <span>+ поштарина</span>
 				li Тврде корице са "кошуљицом"
@@ -59,7 +59,47 @@
 		height 1rem
 		width 100%
 		margin-bottom 1rem
-	
+	h2
+		margin-bottom 1rem
+	hr
+		margin-bottom 1rem
+	.col-lg-4
+		padding-top 1rem
+		padding-bottom 1rem
+	img
+		filter: drop-shadow(3px 0px 4px #000)
+	a.btn
+		margin-bottom .75rem
+		span
+			opacity 0
+			margin-right 1rem
+			transition: .3s
+		&:hover span
+			opacity 1	
+			margin-right 0;
+	ul li
+		padding-bottom .75rem
+		line-height 1.33
+		&:last-of-type
+			padding-bottom 0
+	h4
+		padding-bottom .5rem
+	@media screen and (min-width $xs)
+		.order-details
+			border-top 0
+			padding-top .5rem
+	@media screen and (min-width $md)
+		.order-details
+			padding-top 1rem
+			margin-top .5rem
+			border-top: 1px dashed #333
+	@media screen and (max-width $lg - 1px)
+		.col-lg-4
+			margin: 0.5rem 1rem
+			border: 1px solid #333
+			background-color: hsl(0 0% 8% / 1)
+			border-radius: 0.5rem
+
 	</style>
 
 <script setup lang="ts">

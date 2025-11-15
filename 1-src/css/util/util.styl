@@ -19,3 +19,43 @@
 	justify-content center
 	align-items center
 	
+.flex
+	display flex
+	
+.flex.row
+	flex-direction: row
+	
+.flex.col
+	flex-direction column
+	
+.wrap
+	flex-wrap wrap	
+
+.row
+	max-width $wrp
+	margin auto
+
+.no-mb
+	margin-bottom 0
+
+.relative
+	position relative
+	
+.absolute
+	position absolute
+
+.cc
+	margin-left auto
+	margin-right auto
+
+@media screen and (min-width: $xs) and (max-width: $md - 1px)
+	.mob-only
+		display: auto !important
+	.desk-only
+		display: none !important
+		
+@media screen and (min-width: $md)
+	.mob-only
+		display: none !important
+	.desk-only
+		display: auto !important

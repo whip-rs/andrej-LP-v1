@@ -13,6 +13,11 @@
 <style lang="stylus" scoped>
 	.uvod
 		border-bottom 1px solid #222
+	h1
+		margin-bottom 1rem
+	a.btn
+		margin-bottom .5rem
+
 	</style>
 
 <script setup lang="ts">

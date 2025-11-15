@@ -7,6 +7,7 @@
 	world
 	testimonials
 	order
+	primitiveMan
 	footah
 	</template>
 <!-- // -->
@@ -25,6 +26,7 @@
 	import world from './components/world.vue'
 	import testimonials from './components/testimonials.vue'
 	import order from './components/order.vue'
+	import primitiveMan from './components/primitiveMan.vue'
 	import footah from './components/footer.vue'
 	</script>
 

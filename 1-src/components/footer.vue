@@ -70,7 +70,6 @@
 			display flex
 			flex-direction column
 			align-items center
-			opacity .25
 			margin 1rem 0 .5rem
 			text-decoration none
 			user-select none
@@ -80,17 +79,23 @@
 			-webkit-user-drag none
 			user-drag none
 			draggable false
-			transition .3s
-			&:hover
-				opacity 1
 			svg
+				transition .3s
 				width 4rem
+				opacity .25
 			p
+				transition .3s
+				opacity .25
 				text-transform uppercase
 				font-family system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
-				font-size 16px
+				font-size .875rem
 				letter-spacing .2rem
 				margin .5rem 0 0
+			&:hover
+				svg
+					opacity 1
+				p
+					opacity .66
 
 		@media screen and (min-width 480px)
 			.soc-media

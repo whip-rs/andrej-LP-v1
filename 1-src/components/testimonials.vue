@@ -18,6 +18,12 @@
 <style lang="stylus" scoped>
 	.testimonials
 		border-bottom 1px solid #222
+		
+	.testimonials.more
+		h2
+			margin-bottom 1rem
+		p
+			font-size 1rem
 	</style>
 
 <script setup lang="ts">

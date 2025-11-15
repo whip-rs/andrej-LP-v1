@@ -18,6 +18,25 @@
 <style lang="stylus" scoped>
 	.about
 		border-bottom 1px solid #222
+	h1
+		margin-bottom 1.5rem
+	.col-md-5
+		display flex
+		flex-direction column
+		margin-bottom .5rem
+	img
+		margin-left: auto
+		margin-right: auto
+		margin-bottom: 1rem
+		height: auto
+		width: auto
+		max-height: 320px
+		max-width: 100%
+	.author
+		border-radius 400px
+	.button
+		padding-left 0
+		padding-right 0
 	</style>
 
 <script setup lang="ts">

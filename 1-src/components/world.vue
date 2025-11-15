@@ -70,6 +70,8 @@
 <style lang="stylus" scoped>
 	.world
 		border-bottom 1px solid #222
+		display flex
+		flex-wrap wrap
 	</style>
 
 <script setup lang="ts">
