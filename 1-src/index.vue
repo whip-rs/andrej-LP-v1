@@ -9,7 +9,7 @@
 
 	//- NEW
 	section
-		h1.tc Долази уз мапу континента
+		h1.tc Долази са мапом
 	hr
 
 	analize(@open-modal="openModal")

@@ -34,6 +34,7 @@
 		transition: 0.3s;
 		will-change: backdrop-filter;
 		backdrop-filter: blur(8px);
+		scrollbar-color: white transparent;
 	.window
 		width: 100%;
 		z-index: 1000;

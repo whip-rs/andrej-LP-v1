@@ -22,26 +22,43 @@ a.btn
 
 a.btn.fill
 	// border: 1px solid #a7885b
-	border: 1px solid #a7885b80
 	color: #a7885b
-	background-color #a88a5d21
-	letter-spacing: .1rem
+	letter-spacing: 0.075rem
 	justify-content: space-between
+	
+	// border: 1px solid transparent
+	background: linear-gradient(transparent, transparent) padding-box, linear-gradient(to right, #a7885b33, transparent) border-box
+	border: 1px solid rgba(167, 136, 91, 0.502)
+
 	span:nth-child(2)
 		margin-right .5rem
 	span:nth-child(2)
 		transition .3s
 	&:hover
 		color black
+		border-color #a7885b3
 		background-color #a7885b
-		// border-color #aaa
 		box-shadow: inset 0 0 .05rem .0725rem black
 		span:nth-child(2)
 			margin-right 0
 	&:active
-		background-color #a88a5d66
-		color: #a7885b
-		border-color #a7885b
+		background-color black
+		color: #a88a5d80
+		border-color #a7885b33
+	// &:before
+	// 	content: ''
+	// 	position: absolute
+	// 	inset: 0
+	// 	padding: .5px 
+	// 	background: linear-gradient(270deg, #a88a5d80, transparent)
+	// 	-webkit-mask: linear-gradient(#fff 0 0) content-box, 
+	// 	              linear-gradient(#fff 0 0)
+	// 	mask: linear-gradient(#fff 0 0) content-box, 
+	// 	      linear-gradient(#fff 0 0)
+	// 	-webkit-mask-composite: xor
+	// 	mask-composite: exclude
+	// 	border-radius: inherit
+
 
 a.btn.void
 	color white

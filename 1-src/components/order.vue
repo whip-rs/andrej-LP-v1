@@ -103,7 +103,7 @@
 	</style>
 
 <script setup lang="ts">
-	import icoShipping from '@/assets/svg/ico-shipping-01.svg'
+	import icoShipping from '@/assets/svg/shipping.svg'
 	import icoPTT from '@/assets/svg/posta-srbije.svg'
 	</script>
 
