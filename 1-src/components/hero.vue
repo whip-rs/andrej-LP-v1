@@ -2,17 +2,17 @@
 	section.hero
 		img(src="/assets/img/liber-1-2.webp").deep-shadow
 		.flex-col
-			h1 Увиди суштину иза <i>најмрачнијих</i> сукоба човечанства:
+			h1 Угледај суштину иза <i>најмрачнијих</i> сукоба човечанства:
 			h2.no-mb Сага о духовној борби Добра и Зла унутар слојевитог секуларног друштва, на рубу маште и стварног
 			//- замршеног, слојевитог, еволуираног, вишеслојног
 			ul
 				li Фантастика
 				li Психологија
 				li Духовност
-			//- li Мрачна Фантастика
 			a(href="#order-now").btn.fill <span>Наручи одмах</span><span>❯</span>
 			a.btn.void(@click="$emit('open-modal', 'krvavo-praskozorje')") Прочитај "Крваво праскозорје" бесплатно
-			p.micro И доживи себе и свет на један сасвим нов начин.
+			p.micro Политички манифест заборављеног света
+			//- p.micro И доживи себе и свет на један сасвим нов начин.
 		.flex-row.addons
 			.flex
 				shipping.ico
@@ -25,7 +25,7 @@
 			.flex
 				clock.ico#clock
 				p Испорука у року од 24-48ч радним данима
-</template>
+	</template>
 <!--  -->
 <style lang="stylus" scoped>
 	@media screen and (min-width: 320px)
