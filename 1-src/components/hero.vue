@@ -1,85 +1,126 @@
 <template lang="pug">
 	section.hero
-		img(src="/assets/img/liber-1-2.webp").deep-shadow
-		.flex-col
-			h1 Угледај суштину иза <i>најмрачнијих</i> сукоба човечанства:
-			h2.no-mb Сага о духовној борби Добра и Зла унутар слојевитог секуларног друштва, на рубу маште и стварног
-			//- замршеног, слојевитог, еволуираног, вишеслојног
-			ul
-				li Фантастика
-				li Психологија
-				li Духовност
-			a(href="#order-now").btn.fill <span>Наручи одмах</span><span>❯</span>
-			a.btn.void(@click="$emit('open-modal', 'krvavo-praskozorje')") Прочитај "Крваво праскозорје" бесплатно
-			p.micro Политички манифест заборављеног света
-			//- p.micro И доживи себе и свет на један сасвим нов начин.
-		.flex-row.addons
-			.flex
+		.main
+			.hero-img
+				img(src="/assets/img/liber-1-2.webp").deep-shadow
+			.text
+				h1 Загледај дубље од <i>најмрачнијих</i> сукоба човечанства:
+				h2 Сага о духовној борби Добра и Зла унутар слојевитог секуларног друштва, на рубу маште и стварног
+				//- замршеног, слојевитог, еволуираног, вишеслојног
+				ul
+					li Фантастика
+					li Психологија
+					li Духовност
+			.buttons
+				.order
+					a(href="#order-now").btn.fill <span>Наручи одмах</span><span>❯</span>
+					p.micro И упознај себе и свет на један сасвим нови начин.
+				.read
+					a.btn.void(@click="$emit('open-modal', 'krvavo-praskozorje')") Прочитај "Крваво праскозорје" бесплатно
+		.ribbons
+			.bit
 				shipping.ico
-				p Бесплатна достава на тлу Србије
-			.flex
+				.copy
+					p Бесплатна достава
+					p.micro на територији Србије
+			.bit
 				guarantee01.ico
-				.flex-col
+				.copy
 					p Гаранција задовољствa
-					p.micro у супротном пун повраћај новца до 30 дана, са бесплатном повратном поштарином
-			.flex
+					p.micro у супротном пун повраћај новца и бесплатна повратна поштарина до 30 дана од испоруке
+			.bit
 				clock.ico#clock
-				p Испорука у року од 24-48ч радним данима
+				.copy
+					p Испорука за 24-48ч
+					p.micro Радним данима
 	</template>
 <!--  -->
 <style lang="stylus" scoped>
+
 	@media screen and (min-width: 320px)
 		.hero
-			background-image url('assets/img/stone-texture-01.webp')
-			background-size cover
-			background-position center
-			border-bottom 1px solid #222
 			display flex
 			flex-direction column
 			min-height 100vh
-			padding 1rem
-			img
-				width auto
-				margin-top 1rem
-				margin-bottom 1.5rem
+			gap 1rem
+			border-bottom 1px solid #222
+			background-image url('assets/img/stone-texture-01.webp')
+			background-size cover
+			background-position center
+			padding-top 1rem
+			padding-bottom 1rem
+		.hero-img
+			height 100%
+			margin-bottom 1rem
+		.text
+			padding-left 1rem
+			padding-right 1rem
+			display flex
+			flex-direction column
+			gap 1rem
+			// position relative
 		h1
-			font-size 9.5vw
-			margin-bottom 1rem
+			line-height 1
+			font-size 10.4vw
 		h2
-			font-size 5.5vw
 			line-height 1.25
-			margin-bottom 1rem
-		ul li
-			margin-bottom .5rem
-			&:last-of-type
-				margin-bottom 0
+			font-size 6vw
 		ul
-			margin-bottom 1.5rem
-		a.btn
-			margin-bottom 1rem
-			&:last-of-type
-				margin-bottom .5rem
-			
-		.micro
-			margin-bottom 1rem
-		.addons
+			display flex
+			flex-direction column
+			gap .66rem
+			margin-bottom 1.25rem
+		.buttons
+			display flex
+			flex-direction column
+			gap 1rem
+			padding-left 1rem
+			padding-right 1rem
+			.order
+				order 2
+			.micro
+				margin-top .25rem
+		.ribbons
+			padding-left 1rem
+			padding-right 1rem
+			display flex
+			flex-direction column
+			gap .5rem
+		.bit
+			display flex
+			gap 1rem
+		.copy
+			display flex
+			flex-direction column
+			justify-content: center
 			p
 				margin-bottom 0
-			.flex
-				// justify-content: center
-				align-items center
-				margin-bottom .5rem
-			.ico
-				max-height 4rem
-				height 100%
-				width 100%
-				max-width 4rem
-				margin-right 1rem
-				fill #a7885b
-			#clock
-				padding .5rem
-	// @media screen and (min-width: 440px)
-		// .hero
+		.micro
+			margin-bottom 0
+		.ico
+			height 100%
+			width 100%
+			max-width 4rem
+			fill #a7885b
+		#clock
+			padding .5rem
+			
+	@media screen and (min-width: 1200px)
+		.main
+			display flex
+		.hero-img
+			order 2
+		.text
+			order 1
+		.ribbons
+			display flex
+			gap 1rem
+		.bit
+			width 33.33%
+	
+	
+
+
 	</style>
 <!--  -->
 <script setup lang="ts">
