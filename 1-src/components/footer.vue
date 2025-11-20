@@ -52,6 +52,8 @@
 			text-transform uppercase
 			letter-spacing .125rem
 			font-weight 300
+		span
+			font-weight: 300;
 	footer
 		padding-top 1rem
 		z-index 0

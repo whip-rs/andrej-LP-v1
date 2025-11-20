@@ -7,11 +7,6 @@
 	)
 	hero(@open-modal="openModal")
 
-	//- NEW
-	section
-		h1.tc Долази са мапом
-	hr
-
 	analize(@open-modal="openModal")
 	uvod(@open-modal="openModal")
 	about
