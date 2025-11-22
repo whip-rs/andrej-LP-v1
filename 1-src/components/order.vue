@@ -5,8 +5,6 @@
 		.col-lg-4
 			img(src="/assets/img/liber-1-2.webp")
 			h4 Књиге 1 и 2 (спојено):
-			a(href="").btn.fill.mob-only Наручи СМС-ом <span>❯</span>
-			a(href="").btn.fill.desk-only Наручи е-мејлом <span>❯</span>
 			ul
 				li 2400 РСД <span>+ поштарина</span>
 				li Тврде корице са "кошуљицом"
@@ -16,8 +14,6 @@
 		.col-lg-4
 			img(src="/assets/img/liber-3.webp")
 			h4 Само књига 3:
-			a(href="").btn.fill.mob-only Наручи СМС-ом <span>❯</span>
-			a(href="").btn.fill.desk-only Наручи е-мејлом <span>❯</span>
 			ul
 				li 2400 РСД <span>+ поштарина</span>
 				li Тврде корице са "кошуљицом"
@@ -25,14 +21,15 @@
 		.col-lg-4
 			img(src="/assets/img/liber-combo.webp")
 			h4 Комплет књига 1-3:
-			a(href="").btn.fill.mob-only Наручи СМС-ом <span>❯</span>
-			a(href="").btn.fill.desk-only Наручи е-мејлом <span>❯</span>
 			ul
 				li <span class="cross">4400 РСД</span> 3900 РСД <span>+ поштарина</span>
 				li Тврде корице са "кошуљицом"
 				li 986 страна
 				li Долази са мапом Адене
 
+	a(href="").btn.fill.desk-only Наручи Овде <span>❯</span>
+	a(href="").btn.fill.mob-only Наручи Овде <span>❯</span>
+	
 		.col-md-6.cc.order-details
 			span.shipping-ico
 				icoShipping

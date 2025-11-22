@@ -1,27 +1,26 @@
 <template lang="pug">
 	section.hero
 
-		.main
-			.hero-img
-				img(src="/assets/img/liber-1-2.webp").deep-shadow.desktop
-				img(src="/assets/img/liber-1-2-mobile.webp").deep-shadow.mobile
+		.hero-img
+			img(src="/assets/img/liber-1-2.webp").deep-shadow
+			//- img(src="/assets/img/liber-1-2-mobile.webp").deep-shadow
 
-			.text
-				h1 Загледај дубље иза <i>најмрачнијих</i> сукоба човечанства:
-				h2 Сага о духовној борби Добра и Зла унутар слојевитог секуларног друштва, на рубу маште и стварног
-				//- замршеног, слојевитог, еволуираног, вишеслојног
-				ul
-					li Психологија
-					li Философија и духовност
-					li Мрачна фантастика
+		.text
+			h1 Загледај дубље иза <i>најмрачнијих</i> сукоба човечанства:
+			h2 Сага о духовној борби Добра и Зла унутар слојевитог секуларног друштва, на рубу маште и стварног
+			//- замршеног, слојевитог, еволуираног, вишеслојног
+			ul
+				li Психологија
+				li Философија и духовност
+				li Мрачна фантастика
 
-			.buttons
-				.order
-					a(href="#order-now").btn.fill <span>Наручи одмах</span><span>❯</span>
-					p.micro И упознај себе и свет из једног сасвим новог угла.
-				.read
-					a.btn.void(@click="$emit('open-modal', 'krvavo-praskozorje')") Прочитај "Крваво праскозорје" бесплатно
-	
+		.buttons
+			.order
+				a(href="#order-now").btn.fill <span>Наручи одмах</span><span>❯</span>
+				p.micro И упознај себе и свет из једног сасвим новог угла.
+			.read
+				a.btn.void(@click="$emit('open-modal', 'krvavo-praskozorje')") Прочитај "Крваво праскозорје" бесплатно
+
 		hr.left.mobile
 		testimonialCarousel
 		hr.right.mobile
@@ -31,7 +30,7 @@
 	</template>
 <!--	-->
 <style lang="stylus" scoped>
-	@media screen and (min-width: 320px)
+	@media screen and (min-width: 320px) and (max-width: 767px)
 		.hero
 			display flex
 			flex-direction column

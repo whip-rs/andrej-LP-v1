@@ -1,7 +1,8 @@
 <template lang="pug">
 section.primitiveMan
-	h2.tc The Primitive Man
-	p.tc &amp; what each book or set comes with
+	h2.tc Примитивни човек
+	
+	h4.tc У припреми:
 	</template>
 
 <style lang="stylus" scoped>

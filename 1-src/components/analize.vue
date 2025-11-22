@@ -39,6 +39,9 @@
 		margin-bottom 1rem
 		margin-left 1rem
 		margin-right 1rem
+	.potpis
+		margin-bottom 1rem
+		
 	</style>
 
 <script setup lang="ts">
