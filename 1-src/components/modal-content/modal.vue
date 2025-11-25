@@ -5,9 +5,7 @@
 			.close.absolute(@click="handleClose")
 				icoClose.closer
 		div.contents
-			.spinner(v-if="isLoading")
-				p Loading...
-			component(v-else-if="currentComponent" :is="currentComponent")
+			component(v-if="currentComponent" :is="currentComponent")
 	.overlay(@click="handleClose")
 </template>
 
@@ -99,12 +97,6 @@
 		margin-left auto
 		z-index 1000
 
-		.spinner
-			display flex
-			align-items center
-			justify-content center
-			height 100%
-			width 100%
 		p
 			color #999
 			font-size 1rem
@@ -144,7 +136,6 @@ const emit = defineEmits<{
 	close: []
 }>()
 
-const isLoading = ref(false)
 const currentComponent = ref(null)
 const componentProps = ref({})
 let scrollY = 0
@@ -167,8 +158,6 @@ watch(() => props.contentType, async (newType) => {
 		componentProps.value = {}
 		return
 	}
-
-	isLoading.value = true
 	
 	try {
 		const comp = registry[newType]
@@ -184,8 +173,6 @@ watch(() => props.contentType, async (newType) => {
 		console.error(`Failed to load modal component: ${newType}`, error)
 		currentComponent.value = null
 	}
-	
-	isLoading.value = false
 }, { immediate: true })
 
 // Scroll lock implementation

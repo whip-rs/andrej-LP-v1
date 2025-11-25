@@ -2,7 +2,7 @@
 	section.hero
 
 		.hero-img
-			img(src="/assets/img/liber-1-2.webp").deep-shadow
+			img(src="/assets/img/liber-1-2-mobile.webp").deep-shadow
 			//- img(src="/assets/img/liber-1-2-mobile.webp").deep-shadow
 
 		.text
