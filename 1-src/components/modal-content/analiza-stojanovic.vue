@@ -1,7 +1,7 @@
 <template lang="pug">
-h1 Ненад Стојановић
-p.micro.gray https://whip.rs
 .block
+	h1 Ненад Стојановић
+	p.micro.gray whip.rs
 	p Судећи по прва два тома, “Chronica Inqvisitoris” је богата окултно-демонолошка сага изведена из широке културе човечанства, преточена у својеврсну космолошку призму намењену упознавању Сопства са структуром Свемира и игром глуме и сенки при обичној свакодневници.
 	p За секуларни ум, “Chronica Inqvisitoris” је замишљена као “Harry Potter“ за одрасле: робустан мрачни роман који засеца у дубине људске психе, до највећих изопачености, са погледом у свет скривен иза очигледног. За људе са вером, она је замишљена као ризница увида у оперативни модел Зла.
 	p Књига обилује сукулентним приказима насиља и ужаса, стога није препоручљива млађим или преосетљивим читаоцима. У контраст томе, оштро се упушта у нека од најдубљих питања људског духа и основних перспектива на које се људи животно претплаћују, индивидуално и колективно, са указима на историјски репетативне и стога најтипичније линије развоја и исходе слободне воље. Сврха, системи уверења, вредности, Природни модел друштвене организације, врлина и замке њених фиксација, безвремени методи обмане, и много тога другог су у форми алегорије вешто позиционирани и темељно обрађени.
@@ -14,12 +14,31 @@ p.micro.gray https://whip.rs
 	</template>
 
 <style lang="stylus" scoped>
+	.block
+		padding 1.5rem 1rem
+		background-color black
+		box-shadow inset 0 0 1rem 1rem black
+		position: relative;
+		z-index: -1;
+	h1, h2
+		font-size 9.25vw
+		line-height 1
+	p.micro
+		margin-bottom .75rem
+	hr
+		margin-top 1rem
+		margin-bottom 1rem
+		height .51px
+		background-color #333
+	p:not(.micro):not(.sub-block p)
+		margin-bottom .5rem
+		text-wrap: pretty;
+	.spacer
+		display block
+		content ''
+		height .5rem
 	</style>
 
 <script setup lang="ts">
-const props = defineProps< {
-	component?: {
-		name?: string
-		description?: string
-	} }>()
+	
 	</script>

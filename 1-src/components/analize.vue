@@ -32,16 +32,29 @@
 </template>
 
 <style lang="stylus" scoped>
-	.testimonials
-		border-bottom 1px solid #222
+	h1.tc
+		line-height 1
 	hr.mob-only
 		margin-top 1rem
 		margin-bottom 1rem
 		margin-left 1rem
-		margin-right 1rem
-	.potpis
+		margin-right 1rem	
+	p.testimonial
+		font-size 1rem
+	p.testimonial-cta
+		margin-top auto
+		text-transform uppercase
+		letter-spacing .075rem
+		font-size 10px
+		margin-bottom .25rem
+		user-select: none
+	p.potpis
+		font-size 14px
+		color #aaa
 		margin-bottom 1rem
-		
+		.ime
+			color: white
+
 	</style>
 
 <script setup lang="ts">

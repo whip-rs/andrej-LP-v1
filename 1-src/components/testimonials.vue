@@ -16,8 +16,6 @@
 </template>
 
 <style lang="stylus" scoped>
-	.testimonials
-		border-bottom 1px solid #222
 	hr
 		margin 1rem
 	.testimonial

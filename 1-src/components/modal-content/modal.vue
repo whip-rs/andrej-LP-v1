@@ -22,7 +22,6 @@
 		width: 100%;
 		align-items: center;
 		justify-content: center;
-		z-index: 1000;
 		position: fixed;
 		top: 0;
 		right: 0;
@@ -32,21 +31,22 @@
 		transition: 0.3s;
 		will-change: backdrop-filter;
 		backdrop-filter: blur(8px);
-		scrollbar-color: white transparent;
+		z-index: 1000;
+	.relative
+		z-index: 1000;
 	.window
 		width: 100%;
 		z-index: 1000;
 		height: 100%;
 		max-width: 720px;
 		max-height: 720px;
-		border-radius: 1.5rem .75rem 1.5rem 1.5rem;
+		border-radius: .75rem;
 		border: 1px solid #333;
-		background-image: url(assets/img/stone-texture-01.webp);
-		background-size: contain;
 		box-shadow: 0px 8px 2rem 8px #000, 0px 4px 4px 4px #000;
-		padding: 1rem;
 		overflow: clip;
-
+		z-index: 1000;
+		
+		// padding: 1rem;
 		// @media screen and (min-width: $md)
 		// 	padding 1rem
 		// 	border 1px solid #333
@@ -55,8 +55,11 @@
 		.close
 			display flex
 			align-self: end
-			top: -1rem
-			right: -1rem
+			// top: -1rem
+			// right: -1rem
+			z-index: 1000;
+			top 0
+			right 0
 			cursor pointer
 			height: 3rem
 			width: 3rem
@@ -104,7 +107,7 @@
 	.contents
 		overflow scroll
 		height 100%
-		border 1px solid #333
+		// border 1px solid #333
 		border-radius .75rem
 		box-shadow: inset 0px 1rem 1rem 0rem #000, inset 0px -1rem 1rem 0rem #000;
 		
@@ -112,7 +115,7 @@
 
 <script setup lang="ts">
 import { defineAsyncComponent, watch, ref, onUnmounted, markRaw } from 'vue'
-import icoClose from "@/assets/svg/ux-ico-close.svg"
+import icoClose from "@/assets/svg/close.svg"
 
 // Import modal content components
 import KravaPraskozorje from './krvavo-praskozorje.vue'

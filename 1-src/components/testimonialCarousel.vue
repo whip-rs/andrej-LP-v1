@@ -1,31 +1,34 @@
 <template lang="pug">
-	.testimonialCarousel(ref="carousel")
-		.content
-			.single.active
-				p “До сада нисмо имали прилике да се сусретнемо с оваквим делом на српском језику.”
-				p.micro – Данко Камчевски, <span>Универзитет Метрополитан </span>
-			.single
-				p “За дивљење с обзиром да се ради о првенцу.”
-				p.micro – Небојша Петковић
-			.single
-				p "Rизница увида у оперативни модел Зла.”
-				p.micro – Ненад Стојановић, <span>whip.rs</span>
-			.single
-				p “Одушевљен.”
-				p.micro – Дориан Нуај Бафомитрас
-			.single
-				p “Дотакло сваки сегмент мога бића.”
-				p.micro – Зорица Николић, Нови Сад
-			.single
-				p “Открива тамну страну у огољеном облику.”
-				p.micro – Игор, Ниш
-		.indicator
-			.circle.active
-			.circle
-			.circle
-			.circle
-			.circle
-			.circle
+	.cont
+		hr.left
+		.testimonialCarousel(ref="carousel")
+			.content.wrp
+				.single.active
+					p “До сада нисмо имали прилике да се сусретнемо с оваквим делом на српском језику.”
+					p.micro – Данко Камчевски, <span>Универзитет Метрополитан </span>
+				.single
+					p “За дивљење с обзиром да се ради о првенцу.”
+					p.micro – Небојша Петковић
+				.single
+					p "Ризница увида у оперативни модел Зла.”
+					p.micro – Ненад Стојановић, <span>whip.rs</span>
+				.single
+					p “Одушевљен.”
+					p.micro – Дориан Нуај Бафомитрас
+				.single
+					p “Дотакло сваки сегмент мога бића.”
+					p.micro – Зорица Николић, Нови Сад
+				.single
+					p “Открива тамну страну у огољеном облику.”
+					p.micro – Игор, Ниш
+			.indicator.wrp
+				.circle.active
+				.circle
+				.circle
+				.circle
+				.circle
+				.circle
+		hr.right
 	</template>
 <!--	-->
 <style lang="stylus" scoped>
@@ -35,10 +38,11 @@
 		justify-content: space-between
 		padding-left 1rem
 		padding-right 1rem
-		background-color #00000060
+		background-color #00000080
 		padding-top .75rem
 		padding-bottom .75rem
 		user-select none
+		width 100%
 	.content
 		position relative
 		height 66px
@@ -85,6 +89,7 @@
 		width auto
 		font-style normal
 		margin-bottom 0
+		line-height 1
 		opacity 0
 		transition opacity .45s ease, transform .45s ease
 	span
@@ -101,17 +106,61 @@
 		transition-delay .12s
 		opacity 1
 		transform: skew(0deg) translateX(0)
+	hr.left
+		margin-top 1rem
+		background: #333
+		background: linear-gradient(-90deg,rgba(0, 0, 0, .5) 0%, rgba(255, 255, 255, .25));
+	hr.right
+		margin-bottom 1rem
+		background: #333;
+		background: linear-gradient(90deg,rgba(0, 0, 0, .5) 0%, rgba(255, 255, 255, .25));
+		margin-bottom .5rem
 
 @media screen and (min-width: 400px)
 	p
 		font-size 1rem
+		
+@media screen and (min-width: 768px)
+	.single p:not(.micro)
+		font-size 1.25rem
+		// line-height 1
+		margin-bottom .5rem
+	.micro
+		font-size .75rem
+	.indicator
+		margin-top .5rem
+		margin-bottom .25rem
 
 @media screen and (min-width: 1025px)
+	.single
+		align-items: start;
+		p:not(.micro)
+			font-size 1.125rem
+			font-style italic
+			transform skewx(5deg)
 	.circle
 		height .5rem
 		width .5rem
 		border-radius 1rem
-
+	.wrp
+		max-width 1440px
+		padding-left 1rem
+		padding-right 1rem
+		margin-left auto
+		margin-right auto
+		width 100%
+	.content
+		position auto
+		height 48px
+	.indicator
+		margin-bottom .5rem
+	.cont
+		// margin-top 2rem
+		margin-bottom 2rem
+@media screen and (min-width: 1440px)
+	.content
+		left 1rem
+		
 	</style>
 <!--	-->
 <script setup lang="ts">

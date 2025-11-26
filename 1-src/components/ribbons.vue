@@ -7,7 +7,7 @@
 				p.micro на територији Србије
 		.bit#guarantee
 			//- guarantee01.ico
-			img(src="/assets/img/seal.webp").mapa
+			img(src="/assets/img/seal.webp").garancija
 			.copy
 				p Гаранција задовољствa
 				p.micro у супротном пун повраћај новца и бесплатна повратна поштарина до 30 дана од куповине
@@ -16,7 +16,7 @@
 			.copy
 				p Брза испорука
 				p.micro 24-48ч током радних дана
-		.bit
+		.bit#map
 			img(src="/assets/img/adena-mapa.webp").mapa
 			.copy
 				p Долази с мапом континента
@@ -33,6 +33,8 @@
 		flex-direction column
 		flex-wrap: wrap
 		gap .25rem
+	img
+		height auto !important
 	.bit
 		display flex
 		align-items center
@@ -50,7 +52,7 @@
 			padding-bottom 0
 	.micro
 		margin-bottom 0
-	.ico, .mapa
+	.ico, .mapa, .garancija
 		height 100%
 		width 100%
 		max-width 4rem
@@ -65,6 +67,52 @@
 		margin-top -.25rem
 		.ico
 			padding 0.675rem
+			
+	@media screen and (min-width: 1024px)
+		.ribbons
+			width 100%
+			flex-wrap wrap
+			display flex
+			flex-direction row
+		.bit
+			width calc(33.33% - 1rem)
+		#guarantee, #map
+			width calc(66.66% - 1rem)
+
+
+	@media screen and (min-width: 1025px)
+		.bit
+			flex 3
+		.bit#guarantee
+			flex 4
+		.ribbons
+			padding-bottom 0
+			max-width 1440px
+		.copy p:not(.micro)
+			font-size 1.25rem
+			margin-bottom .125rem
+			
+	@media screen and (min-width: 1366px)
+		.bit
+			flex-direction column
+			height 100%
+			gap .5rem
+			.copy
+				text-align center
+		.bit#clock
+			margin-top 0
+		.bit
+			flex 2
+		.bit#guarantee
+			flex 2
+		.ico, .mapa, .garancija
+			min-height 5rem
+			max-width 5rem
+			image-rendering: -webkit-optimize-contrast;	
+		.mapa
+			max-width 6.5rem
+
+
 	</style>
 <!--  -->
 <script setup lang="ts">

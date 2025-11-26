@@ -6,7 +6,7 @@
 			img(src="/assets/img/liber-1-2.webp")
 			h4 Књиге 1 и 2 (спојено):
 			ul
-				li 2400 РСД <span>+ поштарина</span>
+				li 2400 РСД
 				li Тврде корице са "кошуљицом"
 				li 530 страна
 				li Долази са мапом Адене
@@ -15,31 +15,29 @@
 			img(src="/assets/img/liber-3.webp")
 			h4 Само књига 3:
 			ul
-				li 2400 РСД <span>+ поштарина</span>
+				li 2400 РСД
 				li Тврде корице са "кошуљицом"
 				li 456 страна
 		.col-lg-4
 			img(src="/assets/img/liber-combo.webp")
 			h4 Комплет књига 1-3:
 			ul
-				li <span class="cross">4400 РСД</span> 3900 РСД <span>+ поштарина</span>
+				li <span class="cross">4400 РСД</span> 3900 РСД
 				li Тврде корице са "кошуљицом"
 				li 986 страна
 				li Долази са мапом Адене
-
-	a(href="").btn.fill.desk-only Наручи Овде <span>❯</span>
-	a(href="").btn.fill.mob-only Наручи Овде <span>❯</span>
+		.col-12
+			a(href="").btn.fill Наручи Сада <span>❯</span>
 	
 		.col-md-6.cc.order-details
 			span.shipping-ico
 				icoShipping
 			span
 				h4.italic Детаљи испоруке:
-			span.posta-logo
+			//- span.posta-logo
 				icoPTT
 			ul
-				li Књиге се шаљу ПостЕкспрес-ом на кућну адресу
-				li Цена поштарине је 600 РСД
+				li Књиге се испоручују курирском службом на кућну адресу
 				li Испорука се врши на територији целе Србије
 				li Рок испоруке је 1-2 радна дана
 				li Лично преузимање је могуће само у Нишу
@@ -75,7 +73,7 @@
 			opacity 1	
 			margin-right 0;
 	ul li
-		padding-bottom .75rem
+		padding-bottom .5rem
 		line-height 1.33
 		&:last-of-type
 			padding-bottom 0
@@ -100,7 +98,7 @@
 	</style>
 
 <script setup lang="ts">
-	import icoShipping from '@/assets/svg/shipping.svg'
-	import icoPTT from '@/assets/svg/posta-srbije.svg'
+	import icoShipping from "/assets/svg/shipping.svg"
+	import icoPTT from "/assets/svg/posta-srbije.svg"
 	</script>
 

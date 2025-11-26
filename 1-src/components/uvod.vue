@@ -11,12 +11,17 @@
 </template>
 
 <style lang="stylus" scoped>
-	.uvod
-		border-bottom 1px solid #222
 	h1
 		margin-bottom 1rem
+		font-size 10vw
 	a.btn
 		margin-bottom .5rem
+	p
+		text-wrap pretty
+	@media screen and (min-width: 1024px)
+		h1
+			font-size 3rem
+
 
 	</style>
 

@@ -8,12 +8,19 @@
 	hero(@open-modal="openModal")
 
 	analize(@open-modal="openModal")
+	hr
 	uvod(@open-modal="openModal")
+	hr
 	about
+	hr
 	world
+	hr
 	testimonials
+	hr
 	order
+	hr
 	primitiveMan
+	hr
 	footah
 	</template>
 <!-- // -->

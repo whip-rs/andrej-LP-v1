@@ -14,12 +14,14 @@
 	width 100%
 	height 100%
 	display flex
+	z-index 0
 	
 	iframe
 		width 100%
 		height 100%
 		border none
-		border-radius 0.25rem
+		position relative
+		z-index 0
 </style>
 
 <script setup lang="ts">
