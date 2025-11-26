@@ -2,8 +2,8 @@
 	section.hero
 		.wrp
 			.hero-img
-				img(src="/assets/img/liber-1-2-mobile.webp").deep-shadow
-				//- img(src="/assets/img/liber-1-2-mobile.webp").deep-shadow
+				img(src="/assets/img/liber-1-2-mobile.webp").deep-shadow.mobile
+				img(src="/assets/img/liber-1-2-desktop.webp").deep-shadow.desktop
 
 			.txt-and-buttons
 				.text
@@ -117,13 +117,13 @@
 
 	@media screen and (min-width: 1024px)
 		.wrp
-			display flex
-		
-	
+			display flex	
 
 	@media screen and (min-width: 1025px)
 		.mobile
 			display none
+		.desktop
+			display block
 		.hero
 			padding-top 1rem
 			padding-bottom 1rem
@@ -209,11 +209,15 @@
 		.hero
 			padding-top 2rem
 			padding-bottom 2rem
+			background-repeat: no-repeat;
+			background-position: 0 0px;
+			transition .3s
 			
 	</style>
 <!--	-->
 <script setup lang="ts">
 	import ribbons from '/components/ribbons.vue'
 	import testimonialCarousel from '/components/testimonialCarousel.vue'
+
 	</script>
 
