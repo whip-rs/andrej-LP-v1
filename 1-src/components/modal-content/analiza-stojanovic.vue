@@ -15,14 +15,10 @@
 
 <style lang="stylus" scoped>
 	.block
-		padding 1.5rem 1rem
 		background-color black
 		box-shadow inset 0 0 1rem 1rem black
 		position: relative;
 		z-index: -1;
-	h1, h2
-		font-size 9.25vw
-		line-height 1
 	p.micro
 		margin-bottom .75rem
 	hr
@@ -37,6 +33,34 @@
 		display block
 		content ''
 		height .5rem
+		
+	@media screen and (min-width: 320px)
+		.block
+			padding 1.5rem 1rem
+		h1
+			font-size 12.5vw
+			line-height .9
+			margin-top .5rem
+			margin-bottom .5rem
+		h1, h2
+			font-size 9.25vw
+			line-height 1
+			
+	@media screen and (min-width: 1025px)
+		.block
+			padding 1.5rem
+		h1
+			font-size 3rem
+			line-height 1
+			margin-top 0
+			margin-bottom 0
+		h2
+			font-size 2rem
+			margin-top 1rem
+			margin-bottom .25rem
+		hr
+			display none
+
 	</style>
 
 <script setup lang="ts">

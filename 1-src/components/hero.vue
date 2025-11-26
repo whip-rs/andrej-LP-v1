@@ -36,7 +36,7 @@
 			min-height 100vh
 			height 100%
 			width 100%
-			border-bottom 1px solid #222
+			border-bottom 1px solid #333
 			background-image url('assets/img/stone-texture-01.webp')
 			background-size cover
 			background-position center

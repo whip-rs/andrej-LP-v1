@@ -27,23 +27,39 @@
 		height: 100%;
 		z-index: -1;
 		position: relative;
-		padding 1rem
 		height auto
 		background-color #00000020
 		box-shadow inset 0 0 1rem 1rem black
 		background-image: url(assets/img/stone-texture-01.webp);
-		background-size: contain;	
-		h1
-			font-size 12.5vw
-			line-height .9
-			margin-top .5rem
-			margin-bottom .5rem
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
 		p
 			margin-bottom .5rem
 			text-wrap: pretty;
 		p.micro
 			line-height 1
 			margin-bottom 1.25rem
+			
+	@media screen and (min-width: 320px)
+		.block
+			padding 1rem
+		h1
+			font-size 12.5vw
+			line-height .9
+			margin-top .5rem
+			margin-bottom .5rem
+			
+	@media screen and (min-width: 1025px)
+		.block
+			padding 1.5rem
+		h1
+			font-size 3rem
+			line-height 1
+			margin-top 0
+			
+
+
 	</style>
 <!--  -->
 <script setup lang="ts">

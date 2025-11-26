@@ -76,6 +76,27 @@
 		display block
 		content ''
 		height .5rem
+		
+	@media screen and (min-width: 320px)
+		.block
+			padding 1.5rem 1rem
+		h1
+			font-size 12.5vw
+			line-height .9
+			margin-top .5rem
+			margin-bottom .5rem
+			
+	@media screen and (min-width: 1025px)
+		.block
+			padding 1.5rem
+		h1
+			font-size 3rem
+			line-height 1
+			margin-top 0
+			
+
+
+		
 	</style>
 <!--  -->
 <script setup lang="ts">

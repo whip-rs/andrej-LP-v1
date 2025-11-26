@@ -19,8 +19,8 @@
 		.bit#map
 			img(src="/assets/img/adena-mapa.webp").mapa
 			.copy
-				p Долази с мапом континента
-				p.micro мапа Адене укључена уз прву књигу
+				p Мапа континента
+				p.micro у средњем формату долази са првом књигом
 	</template>
 <!--  -->
 <style lang="stylus" scoped>

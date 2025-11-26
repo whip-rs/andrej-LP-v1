@@ -34,6 +34,8 @@
 		z-index: 1000;
 	.relative
 		z-index: 1000;
+		pointer-events: all;
+		user-select: none;
 	.window
 		width: 100%;
 		z-index: 1000;
@@ -45,6 +47,7 @@
 		box-shadow: 0px 8px 2rem 8px #000, 0px 4px 4px 4px #000;
 		overflow: clip;
 		z-index: 1000;
+		pointer-events: none;
 		
 		// padding: 1rem;
 		// @media screen and (min-width: $md)
@@ -85,9 +88,9 @@
 				svg
 					opacity: 1
 			&:active
-				background-color: #1a1a1a
+				background-color: #000
 				svg
-					opacity: .5
+					opacity: .75
 
 	.overlay
 		z-index 900
@@ -110,7 +113,14 @@
 		// border 1px solid #333
 		border-radius .75rem
 		box-shadow: inset 0px 1rem 1rem 0rem #000, inset 0px -1rem 1rem 0rem #000;
+		::selection
+			background-color: #99999980
+			color white
+			
+	.block, .pdf-display
+		pointer-events: all
 		
+
 </style>
 
 <script setup lang="ts">
