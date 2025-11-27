@@ -109,7 +109,7 @@
 
 
 			.price-display
-				label.price-label Укупно при преузимању:
+				div.price-label Укупно при преузимању:
 				.price-value#cost {{ currentPrice }}
 
 
@@ -160,7 +160,7 @@
 	// 	margin-top 1rem
 	// 	margin-bottom 1rem
 
-	.form-group, label, #cost
+	.form-group, #cost
 		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 
 
@@ -169,7 +169,8 @@
 		flex-direction column
 		margin-bottom .75rem
 		
-	label
+	label, .price-label
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 		font-size .675rem
 		user-select none
 		line-height 1
@@ -179,6 +180,13 @@
 		margin-bottom 4px
 		cursor: pointer
 		width: fit-content
+		
+	input, select, label
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
 
 	input, select
 		padding 0.65rem
@@ -189,12 +197,6 @@
 		font-size 1rem
 		transition 0.3s
 		cursor: pointer
-		overflow: hidden;
-		text-overflow: ellipsis;
-		display: -webkit-box;
-		-webkit-line-clamp: 1;
-		-webkit-box-orient: vertical;
-
 		background-color #080808
 		border 1px solid #222
 		
@@ -285,16 +287,26 @@
 					margin-right .5rem
 
 	@media screen and (min-width: 320px)
+	
 		.block.ordering-form
-			padding 0 1rem 1rem 1rem
+			padding 1rem
+			
 		h1
-			font-size 1.5rem
 			display flex
 			flex-direction column
 			justify-content: center
-			line-height calc(3rem - 2px)
+			line-height 1
+			font-size 2rem
+			padding-right 2rem
 			margin-bottom .75rem
-				
+			
+		label
+			font-size 10px
+			
+		input
+			height 40px
+			padding 0.5rem
+			
 		h1, h2
 			user-select none
 			
@@ -302,18 +314,26 @@
 			font-size 1.5rem
 			margin-bottom .5rem
 
-	@media screen and (min-width: 576px)
-		h1
-			font-size 2.5rem
+	@media screen and (max-width: 767px)
+		.block.ordering-form
+			position relative
+			z-index -1
+
 			
-	@media screen and (min-width: 1025px)
+	@media screen and (min-width: 768px)
 		.block.ordering-form
 			padding 1.25rem
 			padding-bottom 1rem
 		h1
 			font-size 2.4rem
-			line-height 1
-			margin-top 0
+
+		label
+			font-size 12px
+			
+		input
+			height 44px
+			padding 0.65rem
+
 
 	</style>
 <!--  -->
@@ -523,7 +543,7 @@
 		if (errorCount === 0) {
 			validationMessage.value = defaultMessage
 		} else if (errorCount > 1) {
-			validationMessage.value = 'Унесите исправне податке у обележена поља'
+			validationMessage.value = 'Неисправни подаци у обележеним пољима'
 		}
 		// If single error (errorCount === 1), the message was already set by the specific validation function
 		
@@ -553,7 +573,7 @@
 			validationMessage.value = defaultMessage
 		} else if (errorCount > 1) {
 			// Multiple errors - show generic message
-			validationMessage.value = 'Унесите исправне податке у обележена поља'
+			validationMessage.value = 'Неисправни подаци у обележеним пољима'
 		}
 		// If errorCount === 1, the specific validation message should already be set
 	}

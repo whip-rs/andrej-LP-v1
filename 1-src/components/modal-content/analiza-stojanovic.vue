@@ -36,28 +36,21 @@
 		
 	@media screen and (min-width: 320px)
 		.block
-			padding 1.5rem 1rem
+			padding 1rem
 		h1
-			font-size 12.5vw
-			line-height .9
-			margin-top .5rem
-			margin-bottom .5rem
-		h1, h2
-			font-size 9.25vw
+			font-size 2.75rem
 			line-height 1
+			padding-right 2rem
 			
 	@media screen and (min-width: 1025px)
 		.block
-			padding 1.5rem
+			padding 1rem
 		h1
 			font-size 3rem
-			line-height 1
 			margin-top 0
-			margin-bottom 0
-		h2
-			font-size 2rem
-			margin-top 1rem
-			margin-bottom .25rem
+			padding-right 0
+		p.micro.gray
+			margin-bottom 1rem
 		hr
 			display none
 

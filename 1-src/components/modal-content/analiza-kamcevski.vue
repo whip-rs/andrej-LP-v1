@@ -51,10 +51,6 @@
 		box-shadow inset 0 0 1rem 1rem black
 		position: relative;
 		z-index: -1;
-	h1
-		font-size 9.25vw
-		line-height 1
-		margin-bottom .5rem
 	h2
 		font-size 1.5rem
 		line-height 1.25
@@ -79,11 +75,11 @@
 		
 	@media screen and (min-width: 320px)
 		.block
-			padding 1.5rem 1rem
+			padding 1rem
 		h1
-			font-size 12.5vw
-			line-height .9
-			margin-top .5rem
+			font-size 2.75rem
+			line-height 1
+			padding-right 2rem
 			margin-bottom .5rem
 			
 	@media screen and (min-width: 1025px)
@@ -91,8 +87,8 @@
 			padding 1.5rem
 		h1
 			font-size 3rem
-			line-height 1
 			margin-top 0
+			padding-right 0
 			
 
 

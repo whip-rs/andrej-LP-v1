@@ -13,7 +13,8 @@
 <style lang="stylus" scoped>
 	h1
 		margin-bottom 1rem
-		font-size 10vw
+		font-size 3rem
+		text-wrap pretty
 	a.btn
 		margin-bottom .5rem
 	p

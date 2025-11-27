@@ -33,7 +33,7 @@
 		display: flex;
 		flex-direction: column;
 		height: 100%;
-		width: 100%;
+		width: inherit;
 		align-items: center;
 		justify-content: center;
 		position: fixed;
@@ -41,7 +41,7 @@
 		right: 0;
 		left: 0;
 		bottom: 0;
-		padding: 1rem;
+		padding: 1rem
 		transition: 0.3s;
 		will-change: backdrop-filter;
 		backdrop-filter: blur(8px);
@@ -53,7 +53,6 @@
 	.window
 		width: fit-content
 		z-index: 1000;
-		// height: 100%;
 		max-width: 720px;
 		max-height: 720px;
 		border-radius: .75rem;
@@ -139,9 +138,24 @@
 	
 	.pdf-display
 		width: 720px
+		max-width: 720px
 		height: 720px
-		max-width: 100%
 		max-height: 100%
+
+	@media screen and (max-width: 720px)
+		.window
+			width: 100%
+			max-width: 100%
+		.pdf-display
+			max-width: 100%
+			max-height: calc(100vh - 6rem)
+
+	@media screen and (max-height: 768px)
+		.window
+			max-height 100%
+		.pdf-display
+			height: auto
+			max-height: calc(100vh - 6rem)
 
 </style>
 

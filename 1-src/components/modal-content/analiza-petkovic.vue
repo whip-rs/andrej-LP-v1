@@ -3,7 +3,7 @@
 		h1 Небојша Петковић
 		p.micro.gray Оригинал преузет са Facebook-а, линк <a class="link gray" target="_blank" href="https://www.facebook.com/photo/?fbid=10235103538110632&set=a.10202953356216178">овде</a>.
 
-		hr
+		//- hr
 
 		p Управо сам завршио читање ове изузетно комплексне књиге. Она то није толико по својој структури, која је у суштини врло систематизована, сведена и јасна, нимало налик Ериксоновим Месечевим вртовима (поређење је ту само због истог епско-фантастичног или митолошког жанра), већ по амбициозним намерама њеног аутора и њиховом веома успешном спровођењу, што је свакако за дивљење с обзиром на то да се ради о првенцу. Као што и сам то каже, на објави која нас је обавестила и заинтригирала за ово дело, она представља сублимацију његових сазнања, искустава и уверења и по томе се, ма колико се као и свака друга прича овог жанра, ослањала на неке темељне обрасце из света фантастике, заиста издваја посебном аутентичношћу, па чак и храброшћу - да се у потпуности следе ти ставови (а и преиспитују) чак и када они противрече свим тим општим местима жанра.
 
@@ -38,9 +38,6 @@
 		box-shadow inset 0 0 1rem 1rem black
 		position: relative;
 		z-index: -1;
-	h1
-		font-size 9.25vw
-		line-height 1
 	h2
 		font-size 1.5rem
 		line-height 1.25
@@ -63,21 +60,22 @@
 
 	@media screen and (min-width: 320px)
 		.block
-			padding 1.5rem 1rem
+			padding 1rem
 		h1
-			font-size 12.5vw
-			line-height .9
-			margin-top .5rem
-			margin-bottom .5rem
+			font-size 2.75rem
+			line-height 1
+			padding-right 2rem
+		p.micro
+			margin-bottom 1rem
 			
 	@media screen and (min-width: 1025px)
 		.block
 			padding 1.5rem
 		h1
 			font-size 3rem
-			line-height 1
 			margin-top 0
-			margin-bottom .25rem
+			padding-right 0
+			margin-bottom 0
 		p.micro.gray
 			margin-bottom 1rem
 		hr

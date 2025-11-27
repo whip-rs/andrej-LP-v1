@@ -30,9 +30,9 @@
 		height auto
 		background-color #00000020
 		box-shadow inset 0 0 1rem 1rem black
-		background-image: url(assets/img/stone-texture-01.webp);
+		background-image: url('assets/img/stone-texture-01.webp');
 		background-size: contain;
-		background-repeat: no-repeat;
+		// background-repeat: no-repeat;
 		background-attachment: fixed;
 		p
 			margin-bottom .5rem
@@ -45,7 +45,8 @@
 		.block
 			padding 1rem
 		h1
-			font-size 12.5vw
+			font-size 3rem
+			padding-right 2rem
 			line-height .9
 			margin-top .5rem
 			margin-bottom .5rem
@@ -54,7 +55,6 @@
 		.block
 			padding 1.5rem
 		h1
-			font-size 3rem
 			line-height 1
 			margin-top 0
 			
