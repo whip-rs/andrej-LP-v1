@@ -1,15 +1,29 @@
 <template lang="pug">
 #modal(:class="{ hide: !open }")
-	.window
+	.window(:class="{ clipped: applyClip }")
 		.relative
-			.close.absolute(@click="handleClose")
+			.close.absolute(@click="handleClose" :class="{ hide: hideClose }")
 				icoClose.closer
+		.relative
+			.absolute.seal(:class="{ hide: !showSeal }")
+				img(src="/assets/img/seal.webp")
 		div.contents
 			component(v-if="currentComponent" :is="currentComponent")
 	.overlay(@click="handleClose")
 </template>
 
 <style lang="stylus" scoped>
+
+	.seal
+		pointer-events none
+		margin-left auto
+		filter drop-shadow(0 0 24px black)
+		right: -2rem;
+		top: -2rem;
+		img
+			height 6rem
+			width 6rem
+
 	.hide
 		opacity 0 !important
 		pointer-events none !important
@@ -45,9 +59,12 @@
 		border-radius: .75rem;
 		border: 1px solid #222;
 		box-shadow: 0px 8px 2rem 8px #000, 0px 4px 4px 4px #000;
-		overflow: clip;
+		// overflow: clip;
 		z-index: 1000;
 		pointer-events: none;
+
+	.window.clipped
+		overflow: clip
 		
 		// padding: 1rem;
 		// @media screen and (min-width: $md)
@@ -70,8 +87,8 @@
 			background-color: black
 			border-left 1px solid #2a2a2a
 			border-bottom 1px solid #2a2a2a
-			border-radius: 0 0 0 .75rem
-			box-shadow: 0px 0px 12px 0 #000;
+			border-radius: 0 .75rem 0 .75rem
+			box-shadow: 0px 8px 16px 0 #00000040;
 			@media screen and (min-width: $xs)
 				top 1px
 				right 1px
@@ -119,12 +136,17 @@
 			
 	.block, .pdf-display
 		pointer-events: all
-		
+	
+	.pdf-display
+		width: 720px
+		height: 720px
+		max-width: 100%
+		max-height: 100%
 
 </style>
 
 <script setup lang="ts">
-import { defineAsyncComponent, watch, ref, onUnmounted, markRaw } from 'vue'
+import { defineAsyncComponent, watch, ref, onUnmounted, markRaw, computed } from 'vue'
 import icoClose from "@/assets/svg/close.svg"
 
 // Import modal content components
@@ -153,6 +175,21 @@ const emit = defineEmits<{
 const currentComponent = ref(null)
 const componentProps = ref({})
 let scrollY = 0
+
+// Computed properties for conditional visibility
+const hideClose = computed(() => {
+	return props.contentType === 'ordering-form' || props.contentType === 'krvavo-praskozorje'
+})
+
+const showSeal = computed(() => {
+	return props.contentType === 'ordering-form' || props.contentType === 'krvavo-praskozorje'
+})
+
+// Clip overflow for all windows except ordering form and krvavo-praskozorje
+const applyClip = computed(() => {
+	if (!props.contentType) return false
+	return props.contentType !== 'ordering-form' && props.contentType !== 'krvavo-praskozorje'
+})
 
 // Component registry mapping content keys to Vue components
 // Use markRaw to prevent Vue from making components reactive

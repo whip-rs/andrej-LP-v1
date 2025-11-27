@@ -2,10 +2,6 @@
 
 	.block.ordering-form
 
-		//- .relative.seal
-		//- 	.absolute
-		//- 		img(data-v-0046fd79="" class="garancija" src="/assets/img/seal.webp")
-		
 		form(@submit.prevent="handleSubmit")
 
 			h1 Направи поруџбину
@@ -101,18 +97,22 @@
 
 			.form-group.book-price
 				.dropdown
-					label(for="book") Наручујем:
+					label(for="book") Садржај наруџбине:
 					select#book(
 						v-model="formData.book"
 						required
 						tabindex="7"
 					)
-						option(value="1-2") Књиге 1-2
+						option(value="1-2") Књигa 1+2
 						option(value="3") Књига 3
-						option(value="1-3") Књиге 1-3
-				.price-display
-					label.price-label.t Укупно:
-					.price-value {{ currentPrice }}
+						option(value="1-3") Све три књиге
+
+
+			.price-display
+				label.price-label Укупно при преузимању:
+				.price-value#cost {{ currentPrice }}
+
+
 
 			.form-actions
 				a.btn.fill(role="button" aria-label="Пошаљи поруџбину" @click="handleSubmit" @keydown.enter.prevent="handleSubmit" @keydown.space.prevent="handleSubmit" tabindex="8") Пошаљи поруџбину<span>❯</span>
@@ -140,31 +140,16 @@
 		user-select none
 		p.micro
 			// color #bbb
-			color #a7885b
+			color gray
 			margin-bottom 0
 		.error
 			background-color transparent !important
-
-		// ul
-		// 	margin-left 0
-		// li
-		// 	font-size .85rem
-		// 	line-height 1.2
-		// 	margin-bottom .25rem
-
 
 	.block.ordering-form
 		background-color black
 		margin auto
 		::selection
 			background-color #222
-
-	.seal
-		user-select none
-		pointer-events none
-		display none
-		// z-index 1
-
 	form
 		display flex
 		flex-direction column
@@ -175,11 +160,14 @@
 	// 	margin-top 1rem
 	// 	margin-bottom 1rem
 
+	.form-group, label, #cost
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+
+
 	.form-group
 		display flex
 		flex-direction column
 		margin-bottom .75rem
-		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 		
 	label
 		font-size .675rem
@@ -260,26 +248,21 @@
 			cursor pointer
 
 	.price-display
-		display flex
-		flex-direction column		
 		label
 			cursor inherit
-			width: 100%;
-			flex: 1;
-			text-align: right;
+			margin-top auto
+			margin-bottom auto
 		.price-label
 			color white
 			
 	.price-value
-		padding 0.65rem 0
 		line-height 1
 		color #fff
 		font-size 1.325rem
 		transition border-color 0.2s
 		user-select none
-		height 44px
+		// text-align: right;
 		font-variant-caps: small-caps
-		// color #a7885b
 		
 
 	.form-actions
@@ -287,7 +270,7 @@
 		a.btn.fill
 			width 100%
 			display flex
-			margin-top: .5rem;
+			margin-top: 1rem;
 			cursor pointer
 			span
 				transition .3s
