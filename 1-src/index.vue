@@ -11,13 +11,13 @@
 	hr
 	uvod(@open-modal="openModal")
 	hr
-	about
+	about(@open-modal="openModal")
 	hr
-	world
+	world(@open-modal="openModal")
 	hr
 	testimonials
 	hr
-	order
+	order(@open-modal="openModal")
 	hr
 	primitiveMan
 	hr

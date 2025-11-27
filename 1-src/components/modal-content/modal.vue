@@ -37,13 +37,13 @@
 		pointer-events: all;
 		user-select: none;
 	.window
-		width: 100%;
+		width: fit-content
 		z-index: 1000;
-		height: 100%;
+		// height: 100%;
 		max-width: 720px;
 		max-height: 720px;
 		border-radius: .75rem;
-		border: 1px solid #333;
+		border: 1px solid #222;
 		box-shadow: 0px 8px 2rem 8px #000, 0px 4px 4px 4px #000;
 		overflow: clip;
 		z-index: 1000;
@@ -134,6 +134,7 @@ import AnalzaPetkovic from './analiza-petkovic.vue'
 import AnalizaStojanovic from './analiza-stojanovic.vue'
 import PdfKamcevski from './pdf-kamcevski.vue'
 import PdfStojanovic from './pdf-stojanovic.vue'
+import OrderingForm from './ordering.vue'
 
 interface Props {
 	open?: boolean
@@ -162,6 +163,7 @@ const registry = {
 	'analiza-stojanovic': markRaw(AnalizaStojanovic),
 	'pdf-kamcevski': markRaw(PdfKamcevski),
 	'pdf-stojanovic': markRaw(PdfStojanovic),
+	'ordering-form': markRaw(OrderingForm),
 }
 
 // Watch for changes to contentType and load appropriate component

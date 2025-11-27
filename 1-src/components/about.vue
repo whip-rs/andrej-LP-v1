@@ -12,7 +12,7 @@
 			p Више од 25 година се неформално бави проучавањем феномена система веровања и алтернативне религиозности, верског радикализма и екстремизма, и појава сектног и манипулативног деловања.
 		.col-12
 			.button.col-md-6.col-lg-4.cc
-				a(href="#order-now").btn.fill <span>Наручи одмах</span><span>❯</span>
+				a.btn.fill(@click="$emit('open-modal', 'ordering-form')") <span>Наручи одмах</span><span>❯</span>
 	</template>
 
 <style lang="stylus" scoped>
@@ -40,5 +40,7 @@
 	</style>
 
 <script setup lang="ts">
+	defineEmits(['open-modal'])
 	</script>
+
 

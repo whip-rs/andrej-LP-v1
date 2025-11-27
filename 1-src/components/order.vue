@@ -27,7 +27,7 @@
 				li 986 страна
 				li Долази са мапом Адене
 		.col-12
-			a(href="").btn.fill Наручи Сада <span>❯</span>
+			a.btn.fill(@click="$emit('open-modal', 'ordering-form')") Наручи Сада <span>❯</span>
 	
 		.col-md-6.cc.order-details
 			span.shipping-ico
@@ -100,5 +100,8 @@
 <script setup lang="ts">
 	import icoShipping from "/assets/svg/shipping.svg"
 	import icoPTT from "/assets/svg/posta-srbije.svg"
+	
+	defineEmits(['open-modal'])
 	</script>
+
 

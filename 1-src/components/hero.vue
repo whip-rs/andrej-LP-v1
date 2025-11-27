@@ -17,7 +17,7 @@
 
 				.buttons
 					.order
-						a(href="#order-now").btn.fill <span>Наручи одмах</span><span>❯</span>
+						a.btn.fill(@click="$emit('open-modal', 'ordering-form')") <span>Наручи одмах</span><span>❯</span>
 						p.micro И упознај себе и свет из једног сасвим новог угла.
 					.read
 						a.btn.void(@click="$emit('open-modal', 'krvavo-praskozorje')") Прочитај "Крваво праскозорје" бесплатно

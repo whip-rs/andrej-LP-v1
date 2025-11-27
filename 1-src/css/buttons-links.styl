@@ -17,6 +17,7 @@ a.btn
 	-moz-user-select: none
 	-webkit-user-select: none
 	-ms-user-select: none
+	cursor pointer
 	backdrop-filter blur(4px)
 	font-family: Times New Roman, serif
 
@@ -25,10 +26,8 @@ a.btn.fill
 	color: #a7885b
 	letter-spacing: 0.075rem
 	justify-content: space-between
-	
-	// border: 1px solid transparent
-	background: linear-gradient(transparent, transparent) padding-box, linear-gradient(to top right, #a7885b33, transparent) border-box
 	border: 1px solid rgba(167, 136, 91, 0.502)
+	background: linear-gradient(transparent, transparent) padding-box, linear-gradient(to top right, #a7885b33, transparent) border-box
 
 	span:nth-child(2)
 		margin-right .5rem
@@ -46,10 +45,10 @@ a.btn.fill
 		color: #a88a5d80
 		border-color #a7885b33
 
+
 a.btn.void
 	color #f2f2f2
 	border: 1px solid #ffffff54
-	cursor pointer
 	&:hover
 		color black
 		background-color: #f2f2f2

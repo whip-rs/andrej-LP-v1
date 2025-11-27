@@ -64,7 +64,7 @@
 				p Генеза и структура Универзума су и дан данас предмет дебата и многих теорија тек делимично усклађених у колективном искуству. Иза њега су безоблично Ништавило, Интерзона у многе суб-димензије Омниверзума, Хаос, и Пустаре Црног Сунца.
 		.col-12
 			.button.cc
-				a(href="#order-now").btn.fill <span>Наручи одмах</span><span>❯</span>
+				a.btn.fill(@click="$emit('open-modal', 'ordering-form')") <span>Наручи одмах</span><span>❯</span>
 	</template>
 
 <style lang="stylus" scoped>
@@ -75,5 +75,7 @@
 	</style>
 
 <script setup lang="ts">
+	defineEmits(['open-modal'])
 	</script>
+
 
