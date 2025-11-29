@@ -23,7 +23,7 @@
 						li.cena 2800 рсд
 					a.btn.fill(@click="$emit('open-modal', 'ordering-form', '3')") Наручи књигу 3<span>❯</span>
 				.card
-					img(src="/assets/img/liber-combo.webp")
+					img(src="/assets/img/liber-komplet.webp")
 					h4 Комплет:
 					ul
 						li Тврде корице са кошуљицом

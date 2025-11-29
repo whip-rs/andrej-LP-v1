@@ -83,7 +83,6 @@
 						@blur="errors.city && validateCity()"
 					)
 
-
 			.form-group
 				label(for="address" :class="{ error: errors.address }") Адреса:
 				input#address(
@@ -97,24 +96,25 @@
 					@blur="errors.address && validateAddress()"
 				)
 			
-			//- .form-group
-			//- 	label(for="phone" :class="{ error: errors.phone }") Телефон:
-			//- 	input#phone(
-			//- 		v-model="formData.phone"
-			//- 		type="tel"
-			//- 		required
-			//- 		placeholder=""
-			//- 		autocomplete="tel"
-			//- 		tabindex="6"
-			//- 		:class="{ error: errors.phone }"
-			//- 		@input="formatPhone"
-			//- 		@blur="errors.phone && validatePhone()"
-			//- 	)
+				//- .form-group
+				//- 	label(for="phone" :class="{ error: errors.phone }") Телефон:
+				//- 	input#phone(
+				//- 		v-model="formData.phone"
+				//- 		type="tel"
+				//- 		required
+				//- 		placeholder=""
+				//- 		autocomplete="tel"
+				//- 		tabindex="6"
+				//- 		:class="{ error: errors.phone }"
+				//- 		@input="formatPhone"
+				//- 		@blur="errors.phone && validatePhone()"
+				//- 	)
 
-			.form-group.book-price
+			.book-price
 				.dropdown
-					label(for="book") Садржај наруџбине:
+					label(for="book" @click.prevent="openBookPicker") Садржај наруџбине:
 					select#book(
+						ref="bookSelect"
 						v-model="formData.book"
 						required
 						tabindex="7"
@@ -123,11 +123,12 @@
 						option(value="3") Књига 3
 						option(value="1-3") Комплет
 
-			.price-display
-				div.price-label Укупно при преузимању:
-				.price-value#cost {{ currentPrice }}
+				.image-display
+					img(:src="currentImage" :alt="currentImageAlt")
 
-
+				.price-display
+					.price-label Укупно при преузимању:
+					.price-value#cost {{ currentPrice }}
 
 			.form-actions
 				a.btn.fill(role="button" aria-label="Пошаљи поруџбину" @click="handleSubmit" @keydown.enter.prevent="handleSubmit" @keydown.space.prevent="handleSubmit" tabindex="8") Пошаљи поруџбину<span>❯</span>
@@ -188,16 +189,14 @@
 	// 	margin-top 1rem
 	// 	margin-bottom 1rem
 
-	.form-group, #cost
+	.form-group, #cost, select, option
 		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
-
 
 	.form-group
 		display flex
 		flex-direction column
 		margin-bottom .75rem
 
-		
 	label, .price-label
 		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 		font-size .675rem
@@ -209,6 +208,10 @@
 		margin-bottom 4px
 		cursor: pointer
 		width: fit-content
+		
+	.price-label
+		pointer-events none
+		cursor inherit
 		
 	input, select, label
 		overflow: hidden;
@@ -246,8 +249,8 @@
 		background: black;
 		color: white;
 
-	select
-		cursor pointer
+	select, option
+		cursor pointer !important
 
 	.address, .contact
 		display flex
@@ -270,29 +273,6 @@
 	.city
 		flex 1
 		max-width: 100%
-
-	.dropdown
-		display flex
-		flex-direction column
-		flex 2
-		
-	.book-price
-		flex-direction row
-		gap 1rem
-		select
-			cursor pointer
-
-	.price-display
-		// border-left 1px solid #444
-		// padding-left .75rem
-		// margin-left .75rem
-		label
-			cursor inherit
-			margin-top auto
-			margin-bottom auto
-		.price-label
-			color white
-			cursor inherit
 			
 	.price-value
 		line-height 1
@@ -303,9 +283,7 @@
 		// text-align: right;
 		font-variant-caps: small-caps
 		
-
-	.form-actions
-		
+	.form-actions	
 		a.btn.fill
 			width 100%
 			display flex
@@ -322,6 +300,7 @@
 				box-shadow: inset 0 0 .05rem .0725rem black, 0 0 8px 0 #a7885b80
 				span
 					margin-right .5rem
+
 
 	@media screen and (min-width: 320px)
 	
@@ -365,6 +344,47 @@
 			height 44px
 			padding 0.65rem
 
+	.book-price
+		display grid
+		grid-template-columns 1fr auto
+		grid-template-rows auto auto
+		// gap 0.75rem
+		// margin-bottom 0.75rem
+		
+		.dropdown
+			grid-column 1
+			grid-row 1
+			display flex
+			flex-direction column
+			margin-bottom 0.75rem;
+			
+		.price-display
+			grid-column 1
+			grid-row 2
+			display flex
+			flex-direction column
+			justify-content flex-end
+			border-left 1px solid #333
+			// border-left 1px solid #a7885b
+			padding-left .75rem
+			margin-left .75rem
+		
+		.image-display
+			grid-column 2
+			grid-row 1 / 3
+			aspect-ratio 1
+			width auto
+			height 100%
+			display flex
+			align-items stretch
+			max-height: 108px;
+			margin-left .75rem
+			margin-right .5rem
+			
+			img
+				// object-fit cover
+				max-height 127px
+
 
 	</style>
 <!--  -->
@@ -380,6 +400,25 @@
 	})
 	
 	const emailInput = ref<HTMLInputElement | null>(null)
+	const bookSelect = ref<HTMLSelectElement | null>(null)
+
+	// Programmatically open/focus the book select when its label is clicked
+	const openBookPicker = () => {
+		if (!bookSelect.value) return
+		// Focus first (universal)
+		bookSelect.value.focus()
+		// Try native showPicker (Chromium browsers)
+		const picker = (bookSelect.value as any).showPicker
+		if (typeof picker === 'function') {
+			try { picker.call(bookSelect.value) } catch (_) { /* ignore */ }
+		} else {
+			// Fallback: dispatch a key event that commonly opens selects
+			try {
+				const evt = new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true })
+				bookSelect.value.dispatchEvent(evt)
+			} catch (_) { /* noop */ }
+		}
+	}
 	
 	const formData = ref({
 		email: '',
@@ -418,6 +457,24 @@
 	
 	const currentPrice = computed(() => {
 		return prices[formData.value.book]
+	})
+
+	// Image sources mapped to book selection
+	const imageSources: Record<string, string> = {
+		'1-2': '/assets/img/liber-1-2.webp',
+		'3': '/assets/img/liber-3.webp',
+		'1-3': '/assets/img/liber-komplet.webp'
+	}
+
+	const currentImage = computed(() => imageSources[formData.value.book] || imageSources['1-2'])
+
+	const currentImageAlt = computed(() => {
+		switch (formData.value.book) {
+			case '1-2': return 'Chronica Inqvistoris књиге I и II';
+			case '3': return 'Chronica Inqvistoris књига III';
+			case '1-3': return 'Chronica Inqvistoris комплет';
+			default: return 'Chronica Inqvistoris';
+		}
 	})
 	
 	const formatEmail = (event) => {
@@ -643,4 +700,3 @@
 		emailInput.value?.focus()
 	})
 	</script>
-
