@@ -38,11 +38,8 @@ section
 			border-bottom-color white
 
 	.image
-
-	img
 		max-width: 128px;
 		margin: auto;
-		margin-right: 0;
 		filter:	drop-shadow(0 0px 12px #392915)
 	
 	.micro

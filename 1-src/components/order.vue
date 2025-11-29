@@ -45,6 +45,12 @@
 	</template>
 
 <style lang="stylus" scoped>
+	section
+		background-image url('@/assets/img/stone-texture-01.webp')
+		background-size cover
+		background-position center
+
+
 	a
 		color #a7885b
 		transition: .3s
