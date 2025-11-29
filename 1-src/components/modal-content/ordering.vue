@@ -391,6 +391,11 @@
 <script setup lang="ts">
 	import { ref, computed, onMounted, nextTick, watch } from 'vue'
 	
+	// Import images so Vite can process them
+	import liber12Img from '../../assets/img/liber-1-2.webp'
+	import liber3Img from '../../assets/img/liber-3.webp'
+	import liberKompletImg from '../../assets/img/liber-komplet.webp'
+	
 	interface Props {
 		modalData?: string | null
 	}
@@ -461,9 +466,9 @@
 
 	// Image sources mapped to book selection
 	const imageSources: Record<string, string> = {
-		'1-2': '/assets/img/liber-1-2.webp',
-		'3': '/assets/img/liber-3.webp',
-		'1-3': '/assets/img/liber-komplet.webp'
+		'1-2': liber12Img,
+		'3': liber3Img,
+		'1-3': liberKompletImg
 	}
 
 	const currentImage = computed(() => imageSources[formData.value.book] || imageSources['1-2'])

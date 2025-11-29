@@ -1,5 +1,5 @@
 <template lang="pug">
-	.block
+	.block(:style="{ backgroundImage: `url(${stoneTexture})` }")
 		h1 Крваво праскозорје
 		//- h1 Политички манифест заборављеног света
 		p.micro Бесплатни исечак са краја друге књиге
@@ -30,7 +30,6 @@
 		height auto
 		background-color #00000020
 		box-shadow inset 0 0 1rem 1rem black
-		background-image: url('assets/img/stone-texture-01.webp');
 		background-size: contain;
 		// background-repeat: no-repeat;
 		background-attachment: fixed;
@@ -63,4 +62,5 @@
 	</style>
 <!--  -->
 <script setup lang="ts">
+	import stoneTexture from '../../assets/img/stone-texture-01.webp'
 	</script>
