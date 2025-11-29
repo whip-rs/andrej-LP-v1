@@ -129,6 +129,11 @@
 		// border 1px solid #333
 		border-radius .75rem
 		box-shadow: inset 0px 1rem 1rem 0rem #000, inset 0px -1rem 1rem 0rem #000;
+		scrollbar-color: #ffffff40 transparent;
+		scrollbar-width: thin;
+		overflow-x: hidden;
+		overflow-y: auto;
+
 		::selection
 			background-color: #99999980
 			color white
@@ -154,8 +159,7 @@
 		.window
 			max-height 100%
 		.pdf-display
-			height: auto
-			max-height: calc(100vh - 6rem)
+			max-height: calc(100vh - 2rem)
 
 </style>
 

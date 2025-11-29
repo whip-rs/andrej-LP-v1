@@ -20,11 +20,17 @@
 	order(@open-modal="openModal")
 	hr
 	primitiveMan
-	hr
+	hr.incoming
+	uPripremi
+	hr.incoming
 	footah
 	</template>
 <!-- // -->
 <style lang="stylus" scoped>
+	hr.incoming
+		background-color: #a7885b;
+		height: .75px;
+		background: linear-gradient(90deg, rgba(167, 136, 91, 0) 0%, #a7885b80 50%, rgba(167, 136, 91, 0) 100%);
 	</style>
 <!-- // -->
 <script setup>
@@ -39,6 +45,7 @@
 	import testimonials from './components/testimonials.vue'
 	import order from './components/order.vue'
 	import primitiveMan from './components/primitiveMan.vue'
+	import uPripremi from './components/uPripremi.vue'
 	import footah from './components/footer.vue'
 	
 	// Modal state management

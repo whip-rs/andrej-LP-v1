@@ -16,8 +16,6 @@
 	</template>
 
 <style lang="stylus" scoped>
-	.about
-		border-bottom 1px solid #222
 	h1
 		margin-bottom 1.5rem
 	.col-md-5

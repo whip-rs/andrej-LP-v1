@@ -44,8 +44,6 @@
 	</template>
 
 <style lang="stylus" scoped>
-	.order
-		border-bottom 1px solid #222
 	.order-details
 		display flex
 		flex-direction: column

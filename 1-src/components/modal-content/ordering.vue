@@ -168,6 +168,7 @@
 		display flex
 		flex-direction column
 		margin-bottom .75rem
+
 		
 	label, .price-label
 		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
@@ -313,12 +314,6 @@
 		h2
 			font-size 1.5rem
 			margin-bottom .5rem
-
-	@media screen and (max-width: 767px)
-		.block.ordering-form
-			position relative
-			z-index -1
-
 			
 	@media screen and (min-width: 768px)
 		.block.ordering-form
