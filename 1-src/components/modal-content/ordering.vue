@@ -9,6 +9,7 @@
 			.form-group
 				label(for="email" :class="{ error: errors.email }") е-mail:
 				input#email(
+					ref="emailInput"
 					v-model="formData.email"
 					type="email"
 					required
@@ -37,20 +38,6 @@
 			
 			.form-group.address
 
-				.city
-					label(for="city" :class="{ error: errors.city }") Град:
-					input#city(
-						v-model="formData.city"
-						type="text"
-						required
-						placeholder=""
-						autocomplete="address-level2"
-						tabindex="3"
-						:class="{ error: errors.city }"
-						@input="formatCity"
-						@blur="errors.city && validateCity()"
-					)
-
 				.postal-no
 					label(for="pobox" :class="{ error: errors.pobox }") Поштански број:
 					input#pobox(
@@ -67,6 +54,20 @@
 							@input="formatPostalCode"
 							@blur="errors.pobox && validatePobox()"
 						)
+				.city
+					label(for="city" :class="{ error: errors.city }") Град:
+					input#city(
+						v-model="formData.city"
+						type="text"
+						required
+						placeholder=""
+						autocomplete="address-level2"
+						tabindex="3"
+						:class="{ error: errors.city }"
+						@input="formatCity"
+						@blur="errors.city && validateCity()"
+					)
+
 
 			.form-group
 				label(for="address" :class="{ error: errors.address }") Адреса:
@@ -105,7 +106,7 @@
 					)
 						option(value="1-2") Књигa 1+2
 						option(value="3") Књига 3
-						option(value="1-3") Све три књиге
+						option(value="1-3") Комплет
 
 
 			.price-display
@@ -117,8 +118,9 @@
 			.form-actions
 				a.btn.fill(role="button" aria-label="Пошаљи поруџбину" @click="handleSubmit" @keydown.enter.prevent="handleSubmit" @keydown.space.prevent="handleSubmit" tabindex="8") Пошаљи поруџбину<span>❯</span>
 
-			.validation
+			.validation.tr
 				p.micro(:class="{ error: validationMessage !== defaultMessage }") {{ validationMessage }}
+				p.micro За интернационалне поруџбине, <a href="mailto:porudzbine@adena.rs">контакт</a>.
 
 			//- .messages
 				//- ul
@@ -128,6 +130,18 @@
 	</template>
 <!--  -->
 <style lang="stylus" scoped>
+
+	a
+		color #a7885b
+		transition: .3s
+		text-decoration none
+		border-bottom 1px solid #a7885b
+		&:hover
+			color white
+			border-bottom-color white
+
+	a.btn.fill
+		margin-top .75rem !important
 
 	.error
 		color red !important
@@ -251,12 +265,16 @@
 			cursor pointer
 
 	.price-display
+		// border-left 1px solid #444
+		// padding-left .75rem
+		// margin-left .75rem
 		label
 			cursor inherit
 			margin-top auto
 			margin-bottom auto
 		.price-label
 			color white
+			cursor inherit
 			
 	.price-value
 		line-height 1
@@ -333,7 +351,17 @@
 	</style>
 <!--  -->
 <script setup lang="ts">
-	import { ref, computed } from 'vue'
+	import { ref, computed, onMounted, nextTick, watch } from 'vue'
+	
+	interface Props {
+		modalData?: string | null
+	}
+	
+	const props = withDefaults(defineProps<Props>(), {
+		modalData: null
+	})
+	
+	const emailInput = ref<HTMLInputElement | null>(null)
 	
 	const formData = ref({
 		email: '',
@@ -344,6 +372,13 @@
 		pobox: '',
 		phone: ''
 	})
+	
+	// Watch for modalData changes and update book selection
+	watch(() => props.modalData, (newData) => {
+		if (newData && ['1-2', '3', '1-3'].includes(newData)) {
+			formData.value.book = newData
+		}
+	}, { immediate: true })
 	
 	const errors = ref({
 		email: false,
@@ -358,9 +393,9 @@
 	const validationMessage = ref(defaultMessage)
 	
 	const prices = {
-		'1-2': '2400 рсд',
-		'3': '2000 рсд',
-		'1-3': '3900 рсд'
+		'1-2': '3300 рсд',
+		'3': '2800 рсд',
+		'1-3': '4500 рсд'
 	}
 	
 	const currentPrice = computed(() => {
@@ -583,5 +618,11 @@
 		console.log('Form submitted:', formData.value)
 		alert('Наруџбина је примљена! (Функција слања е-поште ће бити имплементирана касније)')
 	}
+	
+	// Auto-focus email field when component mounts
+	onMounted(async () => {
+		await nextTick()
+		emailInput.value?.focus()
+	})
 	</script>
 

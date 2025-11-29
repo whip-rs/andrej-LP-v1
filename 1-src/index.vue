@@ -2,6 +2,7 @@
 	modal(
 		:open="isModalOpen"
 		:content-type="modalPayload"
+		:modal-data="modalData"
 		@close="closeModal"
 		@open-modal="openModal"
 	)
@@ -18,19 +19,19 @@
 	testimonials
 	hr
 	order(@open-modal="openModal")
-	hr
+	hr.spec
+	satisfactionGuarantee
+	hr.spec
 	primitiveMan
-	hr.incoming
-	uPripremi
-	hr.incoming
+	
+	//- hr.spec
+	//- uPripremi
+	hr
+
 	footah
 	</template>
 <!-- // -->
 <style lang="stylus" scoped>
-	hr.incoming
-		background-color: #a7885b;
-		height: .75px;
-		background: linear-gradient(90deg, rgba(167, 136, 91, 0) 0%, #a7885b80 50%, rgba(167, 136, 91, 0) 100%);
 	</style>
 <!-- // -->
 <script setup>
@@ -45,21 +46,24 @@
 	import testimonials from './components/testimonials.vue'
 	import order from './components/order.vue'
 	import primitiveMan from './components/primitiveMan.vue'
-	import uPripremi from './components/uPripremi.vue'
+	import satisfactionGuarantee from './components/satisfactionGuarantee.vue'
 	import footah from './components/footer.vue'
 	
 	// Modal state management
 	const isModalOpen = ref(false)
 	const modalPayload = ref(null)
+	const modalData = ref(null)
 	
-	function openModal(contentType) {
+	function openModal(contentType, data) {
 		modalPayload.value = contentType
+		modalData.value = data
 		isModalOpen.value = true
 	}
 	
 	function closeModal() {
 		isModalOpen.value = false
 		modalPayload.value = null
+		modalData.value = null
 	}
 	</script>
 

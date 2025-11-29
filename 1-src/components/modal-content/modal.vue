@@ -8,7 +8,7 @@
 			.absolute.seal(:class="{ hide: !showSeal }")
 				img(src="/assets/img/seal.webp")
 		div.contents
-			component(v-if="currentComponent" :is="currentComponent")
+			component(v-if="currentComponent" :is="currentComponent" :modal-data="modalData")
 	.overlay(@click="handleClose")
 </template>
 
@@ -179,11 +179,13 @@ import OrderingForm from './ordering.vue'
 interface Props {
 	open?: boolean
 	contentType?: string | null
+	modalData?: any
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	open: false,
-	contentType: null
+	contentType: null,
+	modalData: null
 })
 
 const emit = defineEmits<{

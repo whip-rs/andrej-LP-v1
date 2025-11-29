@@ -1,4 +1,7 @@
 <template lang="pug">
+	//- .infoStripe
+	//- 	infoStripe
+
 	section.hero
 		.wrp
 			.hero-img
@@ -29,6 +32,15 @@
 	</template>
 <!--	-->
 <style lang="stylus" scoped>
+	
+	.infoStripe
+		position absolute
+		top 0
+		width 100%
+		z-index 1
+		.wrp
+			gap 0
+
 	@media screen and (min-width: 320px)
 		.hero
 			display flex
@@ -217,6 +229,7 @@
 <!--	-->
 <script setup lang="ts">
 	import ribbons from '/components/ribbons.vue'
+	import infoStripe from '/components/infoStripe.vue'
 	import testimonialCarousel from '/components/testimonialCarousel.vue'
 
 	</script>

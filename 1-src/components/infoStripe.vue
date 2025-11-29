@@ -1,8 +1,8 @@
 <template lang="pug">
 section
-	.container
-		.col-12.tc
-			p Секција за посебне поруке (најаве, попусти, обавештења). Може да буде интегирсан на врх стране.
+	.wrp
+		p.tc Трака за посебне поруке (најаве, попусти, обавештења)
+hr.spec
 	</template>
 
 <style lang="stylus" scoped>
@@ -16,6 +16,7 @@ section
 		text-shadow 0px 6px 6px black
 	p
 		text-shadow 0px 4px 4px black
+		color: #a7885b;
 		&:last-of-type
 			margin-bottom 0
 

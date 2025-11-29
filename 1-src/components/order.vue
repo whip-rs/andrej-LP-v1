@@ -1,52 +1,92 @@
 <template lang="pug">
-	section.row.order#order-now
-		.col-12
-			h2.tc Наручи одмах:
-		.col-lg-4
-			img(src="/assets/img/liber-1-2.webp")
-			h4 Књиге 1 и 2 (спојено):
-			ul
-				li 2400 РСД
-				li Тврде корице са "кошуљицом"
-				li 530 страна
-				li Долази са мапом Адене
-				li "Крваво праскозорје" је последње поглавље књиге 2 
-		.col-lg-4
-			img(src="/assets/img/liber-3.webp")
-			h4 Само књига 3:
-			ul
-				li 2400 РСД
-				li Тврде корице са "кошуљицом"
-				li 456 страна
-		.col-lg-4
-			img(src="/assets/img/liber-combo.webp")
-			h4 Комплет књига 1-3:
-			ul
-				li <span class="cross">4400 РСД</span> 3900 РСД
-				li Тврде корице са "кошуљицом"
-				li 986 страна
-				li Долази са мапом Адене
-		.col-12
-			a.btn.fill(@click="$emit('open-modal', 'ordering-form')") Наручи Сада <span>❯</span>
-	
-		.col-md-6.cc.order-details
-			span.shipping-ico
-				icoShipping
-			span
-				h4.italic Детаљи испоруке:
-			//- span.posta-logo
-				icoPTT
-			ul
-				li Књиге се испоручују курирском службом на кућну адресу
-				li Испорука се врши на територији целе Србије
-				li Рок испоруке је 1-2 радна дана
-				li Лично преузимање је могуће само у Нишу
+	section
+		.row.order#order-now
+			.col-12
+				h2.tc Наручи одмах:
+			.cards
+
+				.card
+					img(src="/assets/img/liber-1-2.webp")
+					h4 Књиге 1 и 2 (спојено):
+					ul
+						li Тврде корице са кошуљицом
+						li 531 страна (са индексом)
+						li Долази са мапом Адене у средњем формату
+						li.cena 3300 рсд
+					a.btn.fill(@click="$emit('open-modal', 'ordering-form', '1-2')") Наручи књиге 1 и 2 (спојено) <span>❯</span>
+				.card
+					img(src="/assets/img/liber-3.webp")
+					h4 Књига 3:
+					ul
+						li Тврде корице са кошуљицом
+						li 456 страна (са индексом)
+						li.cena 2800 рсд
+					a.btn.fill(@click="$emit('open-modal', 'ordering-form', '3')") Наручи књигу 3<span>❯</span>
+				.card
+					img(src="/assets/img/liber-combo.webp")
+					h4 Комплет:
+					ul
+						li Тврде корице са кошуљицом
+						li 986 страна (са индексима)
+						li Долази са мапом Адене
+						li.cena <span class="cross">5100 рсд</span> 4500 рсд
+					a.btn.fill(@click="$emit('open-modal', 'ordering-form', '1-3')") Наручи све 3 књиге <span>❯</span>
+		
+			.col-md-6.cc
+				.order-details
+					h4 Детаљи испоруке:
+					ul
+						li Књиге се испоручују курирском службом на личну адресу
+						li Испорука у Србији је бесплатна, са роком испоруке од 1-2 радна дана
+						li Лично преузимање истог или следећег дана је могуће само у Нишу
+			hr
+			ribbons
+
 	</template>
 
 <style lang="stylus" scoped>
+	a
+		color #a7885b
+		transition: .3s
+		text-decoration none
+		border-bottom 1px solid #a7885b
+		&:hover
+			color white
+			border-bottom-color white
+
+	.cena
+		font-variant-caps: small-caps
+	.order
+		padding-left 1rem
+		padding-right 1rem
+	.cards
+		display flex
+		flex-wrap wrap
+		gap 1rem
+		margin-bottom 1.5rem
+	.card
+		border: 1px solid #212121;
+		background-color: #0a0a0a;
+		border-radius: 0.5rem;
+		padding 1rem
+		display flex
+		flex-direction column
+		flex 1
+		min-width 320px
+		img
+			margin-bottom .5rem
+		a.btn.fill
+			margin-top auto
 	.order-details
 		display flex
 		flex-direction: column
+		ul
+			margin-bottom 0
+	hr
+		margin-top 1.5rem
+		margin-bottom 1.5rem
+	.ribbons
+		padding-top 0
 	.posta-logo
 		display flex
 		height 1rem
@@ -54,15 +94,12 @@
 		margin-bottom 1rem
 	h2
 		margin-bottom 1rem
-	hr
-		margin-bottom 1rem
 	.col-lg-4
 		padding-top 1rem
 		padding-bottom 1rem
 	img
 		filter: drop-shadow(3px 0px 4px #000)
 	a.btn
-		margin-bottom .75rem
 		span
 			opacity 0
 			margin-right 1rem
@@ -70,6 +107,8 @@
 		&:hover span
 			opacity 1	
 			margin-right 0;
+	ul
+		margin-bottom 1rem
 	ul li
 		padding-bottom .5rem
 		line-height 1.33
@@ -77,15 +116,7 @@
 			padding-bottom 0
 	h4
 		padding-bottom .5rem
-	@media screen and (min-width $xs)
-		.order-details
-			border-top 0
-			padding-top .5rem
-	@media screen and (min-width $md)
-		.order-details
-			padding-top 1rem
-			margin-top .5rem
-			border-top: 1px dashed #333
+
 	@media screen and (max-width $lg - 1px)
 		.col-lg-4
 			margin: 0.5rem 1rem
@@ -98,6 +129,7 @@
 <script setup lang="ts">
 	import icoShipping from "/assets/svg/shipping.svg"
 	import icoPTT from "/assets/svg/posta-srbije.svg"
+	import ribbons from '/components/ribbons.vue'
 	
 	defineEmits(['open-modal'])
 	</script>

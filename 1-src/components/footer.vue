@@ -18,7 +18,7 @@
 						p Twitter/X
 
 		.msg
-			h3.tc И чувајте се Злa.
+			h3.tc И чувајте се од Злa.
 			
 		hr
 		.copyright.no-click
@@ -127,6 +127,7 @@
 			opacity .75
 
 		.copyright
+			// background black
 			background #00000080
 			border-top 1px solid #222
 			padding 1rem
