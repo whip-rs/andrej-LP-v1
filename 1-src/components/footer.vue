@@ -39,7 +39,7 @@
 	footer
 		background-image url('@/assets/img/stone-texture-01.webp')
 		background-position: center
-		background-size: contain
+		background-size: cover
 		display flex
 		flex-direction column
 

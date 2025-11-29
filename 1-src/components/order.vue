@@ -28,7 +28,7 @@
 					ul
 						li Тврде корице са кошуљицом
 						li 986 страна (са индексима)
-						li Долази са мапом Адене
+						li Долази са Адене у средњем формату
 						li.cena <span class="cross">5100 рсд</span> 4500 рсд
 					a.btn.fill(@click="$emit('open-modal', 'ordering-form', '1-3')") Наручи све 3 књиге <span>❯</span>
 		

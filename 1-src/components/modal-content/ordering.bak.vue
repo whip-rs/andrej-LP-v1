@@ -6,36 +6,20 @@
 
 			h1 Направи поруџбину
 
-			.form-group.contact
-				.email
-					label(for="email" :class="{ error: errors.email }") е-mail:
-					input#email(
-						ref="emailInput"
-						v-model="formData.email"
-						type="email"
-						required
-						placeholder=""
-						autocomplete="email"
-						tabindex="1"
-						:class="{ error: errors.email }"
-						@input="formatEmail"
-						@blur="errors.email && validateEmail()"
-					)
-					//- p.micro *Потврда и статуси пошиљке биће слати овде.
-
-				.phone
-					label(for="phone" :class="{ error: errors.phone }") Телефон:
-					input#phone(
-						v-model="formData.phone"
-						type="tel"
-						required
-						placeholder=""
-						autocomplete="tel"
-						tabindex="2"
-						:class="{ error: errors.phone }"
-						@input="formatPhone"
-						@blur="errors.phone && validatePhone()"
-					)
+			.form-group
+				label(for="email" :class="{ error: errors.email }") е-mail:
+				input#email(
+					v-model="formData.email"
+					type="email"
+					required
+					placeholder=""
+					autocomplete="email"
+					tabindex="1"
+					:class="{ error: errors.email }"
+					@input="formatEmail"
+					@blur="errors.email && validateEmail()"
+				)
+				//- p.micro *Потврда и статуси пошиљке биће слати овде.
 
 			.form-group
 				label(for="fullname" :class="{ error: errors.fullname }") Име и Презиме:
@@ -45,13 +29,27 @@
 					required
 					placeholder=""
 					autocomplete="name"
-					tabindex="3"
+					tabindex="2"
 					:class="{ error: errors.fullname }"
 					@input="formatFullname"
 					@blur="errors.fullname && validateFullname()"
 				)
 			
 			.form-group.address
+
+				.city
+					label(for="city" :class="{ error: errors.city }") Град:
+					input#city(
+						v-model="formData.city"
+						type="text"
+						required
+						placeholder=""
+						autocomplete="address-level2"
+						tabindex="3"
+						:class="{ error: errors.city }"
+						@input="formatCity"
+						@blur="errors.city && validateCity()"
+					)
 
 				.postal-no
 					label(for="pobox" :class="{ error: errors.pobox }") Поштански број:
@@ -64,25 +62,11 @@
 							required
 							placeholder=""
 							autocomplete="postal-code"
-							tabindex="3"
+							tabindex="4"
 							:class="{ error: errors.pobox }"
 							@input="formatPostalCode"
 							@blur="errors.pobox && validatePobox()"
 						)
-				.city
-					label(for="city" :class="{ error: errors.city }") Град:
-					input#city(
-						v-model="formData.city"
-						type="text"
-						required
-						placeholder=""
-						autocomplete="address-level2"
-						tabindex="4"
-						:class="{ error: errors.city }"
-						@input="formatCity"
-						@blur="errors.city && validateCity()"
-					)
-
 
 			.form-group
 				label(for="address" :class="{ error: errors.address }") Адреса:
@@ -97,19 +81,19 @@
 					@blur="errors.address && validateAddress()"
 				)
 			
-			//- .form-group
-			//- 	label(for="phone" :class="{ error: errors.phone }") Телефон:
-			//- 	input#phone(
-			//- 		v-model="formData.phone"
-			//- 		type="tel"
-			//- 		required
-			//- 		placeholder=""
-			//- 		autocomplete="tel"
-			//- 		tabindex="6"
-			//- 		:class="{ error: errors.phone }"
-			//- 		@input="formatPhone"
-			//- 		@blur="errors.phone && validatePhone()"
-			//- 	)
+			.form-group
+				label(for="phone" :class="{ error: errors.phone }") Телефон:
+				input#phone(
+					v-model="formData.phone"
+					type="tel"
+					required
+					placeholder=""
+					autocomplete="tel"
+					tabindex="6"
+					:class="{ error: errors.phone }"
+					@input="formatPhone"
+					@blur="errors.phone && validatePhone()"
+				)
 
 			.form-group.book-price
 				.dropdown
@@ -122,6 +106,7 @@
 						option(value="1-2") Књигa 1+2
 						option(value="3") Књига 3
 						option(value="1-3") Комплет
+
 
 			.price-display
 				div.price-label Укупно при преузимању:
@@ -249,12 +234,12 @@
 	select
 		cursor pointer
 
-	.address, .contact
+	.address
 		display flex
 		flex-direction row
 		gap 1rem
 
-	.city, .postal-no, .phone, .email
+	.city, .postal-no
 		display: flex;
 		flex-direction: column;
 		input
@@ -263,10 +248,6 @@
 	 .postal-no
 		max-width: calc(40% - .5rem)
 		
-	.email, .phone
-		max-width: auto
-		flex 1
-
 	.city
 		flex 1
 		max-width: 100%
@@ -369,17 +350,7 @@
 	</style>
 <!--  -->
 <script setup lang="ts">
-	import { ref, computed, onMounted, nextTick, watch } from 'vue'
-	
-	interface Props {
-		modalData?: string | null
-	}
-	
-	const props = withDefaults(defineProps<Props>(), {
-		modalData: null
-	})
-	
-	const emailInput = ref<HTMLInputElement | null>(null)
+	import { ref, computed } from 'vue'
 	
 	const formData = ref({
 		email: '',
@@ -390,13 +361,6 @@
 		pobox: '',
 		phone: ''
 	})
-	
-	// Watch for modalData changes and update book selection
-	watch(() => props.modalData, (newData) => {
-		if (newData && ['1-2', '3', '1-3'].includes(newData)) {
-			formData.value.book = newData
-		}
-	}, { immediate: true })
 	
 	const errors = ref({
 		email: false,
@@ -636,11 +600,5 @@
 		console.log('Form submitted:', formData.value)
 		alert('Наруџбина је примљена! (Функција слања е-поште ће бити имплементирана касније)')
 	}
-	
-	// Auto-focus email field when component mounts
-	onMounted(async () => {
-		await nextTick()
-		emailInput.value?.focus()
-	})
 	</script>
 
