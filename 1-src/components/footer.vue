@@ -2,7 +2,7 @@
 	footer
 		.soc-media
 			.col-12
-				h4.tc Посетите нас и оставите Ваше<br> искуство на страницама:
+				h4.tc Посетите нас и оставите Ваше искуство на страницама:
 			.icons
 				.icon
 					a(href="https://www.facebook.com/chronica.inqvisitoris").ico
@@ -18,7 +18,7 @@
 						p Twitter/X
 
 		.msg
-			h3.tc И чувајте се од Злa.
+			h3.tc И чувајте се Злa.
 			
 		hr
 		.copyright.no-click
@@ -65,8 +65,10 @@
 			padding-bottom 1.5rem
 
 		h4
-			margin-bottom 1.5rem
-			text-wrap pretty
+			max-width: 400px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom 1.5rem	
 		
 		h3
 			color white
@@ -90,9 +92,8 @@
 			svg
 				transition .3s
 				width 4rem
-				fill transparent
 				fill white
-				opacity .2
+				opacity .125
 
 			p
 				color white

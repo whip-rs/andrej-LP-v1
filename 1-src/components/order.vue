@@ -37,8 +37,9 @@
 					h4 Детаљи испоруке:
 					ul
 						li Књиге се испоручују курирском службом на личну адресу
-						li Испорука у Србији је бесплатна, са роком испоруке од 1-2 радна дана
+						li Поштарина у Србији је бесплатна, са роком од 1-2 радна дана
 						li Лично преузимање истог или следећег дана је могуће само у Нишу
+						li 	За интернационалне поруџбине, <a href="mailto:porudzbine@adena.rs">контакт</a>.
 			hr
 			ribbons
 
@@ -74,11 +75,11 @@
 		border: 1px solid #212121;
 		background-color: #0a0a0a;
 		border-radius: 0.5rem;
-		padding 1rem
+		padding 1.25rem
 		display flex
 		flex-direction column
 		flex 1
-		min-width 320px
+		box-shadow: 0px 1rem 1rem 0rem #00000040, 0px .5rem .5rem 0rem #00000040
 		img
 			margin-bottom .5rem
 		a.btn.fill

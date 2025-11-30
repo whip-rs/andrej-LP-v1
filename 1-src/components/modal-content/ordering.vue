@@ -119,7 +119,7 @@
 						required
 						tabindex="7"
 					)
-						option(value="1-2") Књигa 1+2
+						option(value="1-2") Књиге 1 и 2 (спојено)
 						option(value="3") Књига 3
 						option(value="1-3") Комплет
 
@@ -135,7 +135,6 @@
 
 			.validation.tr
 				p.micro(:class="{ error: validationMessage !== defaultMessage }") {{ validationMessage }}
-				p.micro За интернационалне поруџбине, <a href="mailto:porudzbine@adena.rs">контакт</a>.
 
 			//- .messages
 				//- ul
@@ -368,23 +367,29 @@
 			// border-left 1px solid #a7885b
 			padding-left .75rem
 			margin-left .75rem
+			line-clamp value
 		
 		.image-display
 			grid-column 2
 			grid-row 1 / 3
 			aspect-ratio 1
-			width auto
 			height 100%
-			display flex
-			align-items stretch
 			max-height: 108px;
-			margin-left .75rem
-			margin-right .5rem
+			margin-left 1rem
+			// margin-right .5rem
 			
 			img
-				// object-fit cover
+				object-fit cover
 				max-height 127px
 
+	@media screen and (max-width: 360px)
+		.book-price
+			.dropdown
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
 
 	</style>
 <!--  -->

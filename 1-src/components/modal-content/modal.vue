@@ -52,7 +52,6 @@
 		user-select: none;
 	.window
 		width: fit-content
-		z-index: 1000;
 		max-width: 720px;
 		max-height: 720px;
 		border-radius: .75rem;
@@ -64,7 +63,7 @@
 
 	.window.clipped
 		overflow: clip
-		
+				
 		// padding: 1rem;
 		// @media screen and (min-width: $md)
 		// 	padding 1rem
@@ -124,9 +123,7 @@
 			font-size 1rem
 			
 	.contents
-		overflow scroll
 		height 100%
-		// border 1px solid #333
 		border-radius .75rem
 		box-shadow: inset 0px 1rem 1rem 0rem #000, inset 0px -1rem 1rem 0rem #000;
 		scrollbar-color: #ffffff40 transparent;

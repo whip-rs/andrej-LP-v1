@@ -20,7 +20,7 @@
 					p.micro – Анонимна читатељка, Београд
 				.single
 					p “Открива тамну страну у огољеном облику.”
-					p.micro – Анонимни читаоц, Ниш
+					p.micro – Игор Јовановић, Ниш
 			.indicator.wrp
 				.circle.active
 				.circle

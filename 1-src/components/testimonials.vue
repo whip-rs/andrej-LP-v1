@@ -12,7 +12,7 @@
 		hr.mob-only
 		.col-sm-12.col-lg-4
 			p.testimonial Прича и след дешавања су добро осмишљени, држе пажњу и откривају тамну страну у огољеном облику. Поштујем количину уложеног знања. Интригантно дело.
-			p.potpis - <span class="ime">Анонимни читаоц, Ниш</span>
+			p.potpis - <span class="ime">Игор Јовановић, Ниш</span>
 </template>
 
 <style lang="stylus" scoped>
