@@ -19,7 +19,7 @@
 		background-position center
 
 	em
-		text-shadow: 0px 0px 16px white, 0px 0px 12px white, 0px 0px 16px white, 0px 0px 8px white;
+		text-shadow: 0px 0px 12px white, 0px 0px 8px white;
 		color black
 
 	h1

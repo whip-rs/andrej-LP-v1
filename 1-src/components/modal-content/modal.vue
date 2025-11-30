@@ -13,6 +13,11 @@
 </template>
 
 <style lang="stylus" scoped>
+	// Safari & WebKit fixes:
+	// - use overflow: hidden instead of `overflow: clip` for broader support
+	// - apply -webkit-overflow-scrolling: touch & overscroll-behavior to enable
+	//   native scrolling and prevent scroll chaining
+	// - ensure transform layer for correct clipping & compositing (@webkit)
 
 	.seal
 		pointer-events none
@@ -55,14 +60,19 @@
 		max-width: 720px;
 		max-height: 720px;
 		border-radius: .75rem;
+		background-color black
 		border: 1px solid #222;
 		box-shadow: 0px 8px 2rem 8px #000, 0px 4px 4px 4px #000;
 		// overflow: clip;
 		z-index: 1000;
-		pointer-events: none;
+		pointer-events: auto;
+		// Force compositor layer to avoid WebKit clipping issues on children like iframes
+		transform translateZ(0)
 
-	.window.clipped
-		overflow: clip
+		.window.clipped
+			// `overflow: clip` has inconsistent support across WebKit/Safari.
+			// Use `hidden` to reliably clip corners on older browsers.
+			overflow: hidden
 				
 		// padding: 1rem;
 		// @media screen and (min-width: $md)
@@ -130,19 +140,29 @@
 		scrollbar-width: thin;
 		overflow-x: hidden;
 		overflow-y: auto;
+		// Enable smooth/native momentum scrolling on iOS Safari and allow
+		// the inner content to remain scrollable when the page is locked.
+		-webkit-overflow-scrolling: touch;
+		/* Prevent scroll chaining so scrolling inside the modal doesn't
+		   propagate to the document and create awkward behavior on mobile */
+		overflow-scrolling: touch; /* nonstandard but harmless */
 
 		::selection
 			background-color: #99999980
 			color white
 			
 	.block, .pdf-display
-		pointer-events: all
+		pointer-events: auto
+		touch-action: pan-y
 	
 	.pdf-display
 		width: 720px
 		max-width: 720px
 		height: 720px
 		max-height: 100%
+		// Ensure PDF rendering is clipped to the modal's rounded corners
+		overflow: hidden
+		border-radius: 0.75rem
 
 	@media screen and (max-width: 720px)
 		.window
@@ -250,15 +270,18 @@ watch(() => props.open, (isOpen) => {
 		// Record current scroll position
 		scrollY = window.scrollY
 		
-		// Lock scroll
-		document.body.style.position = 'fixed'
-		document.body.style.top = `-${scrollY}px`
-		document.body.style.width = '100%'
+			// Lock scroll and prevent any background scroll on the document
+			// Add extra guard for WebKit/Safari by setting html overflow hidden.
+			document.documentElement.style.overflow = 'hidden'
+			document.body.style.position = 'fixed'
+			document.body.style.top = `-${scrollY}px`
+			document.body.style.width = '100%'
 	} else {
 		// Restore scroll position
-		document.body.style.position = ''
-		document.body.style.top = ''
-		document.body.style.width = ''
+			document.documentElement.style.overflow = ''
+			document.body.style.position = ''
+			document.body.style.top = ''
+			document.body.style.width = ''
 		window.scrollTo(0, scrollY)
 	}
 })

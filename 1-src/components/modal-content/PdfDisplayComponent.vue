@@ -15,13 +15,19 @@
 	height 100%
 	display flex
 	z-index 0
-	
+	// Clip any overflow originating from the PDF and make sure the iframe
+	// respects the parent's rounded corners across browsers including Safari.
+	border-radius inherit
+	overflow hidden
 	iframe
 		width 100%
 		height 100%
 		border none
 		position relative
 		z-index 0
+		border-radius inherit
+	pointer-events auto
+	-webkit-overflow-scrolling: touch
 </style>
 
 <script setup lang="ts">

@@ -28,11 +28,12 @@
 		z-index: -1;
 		position: relative;
 		height auto
-		background-color #00000020
+		background-color #000000
 		box-shadow inset 0 0 1rem 1rem black
 		background-size: contain;
-		// background-repeat: no-repeat;
-		background-attachment: fixed;
+		// background-attachment: fixed;
+		background-repeat: repeat;
+		
 		p
 			margin-bottom .5rem
 			text-wrap: pretty;
