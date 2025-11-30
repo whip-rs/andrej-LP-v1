@@ -17,11 +17,6 @@
 	</template>
 
 <style lang="stylus" scoped>
-	section
-		background-image url('@/assets/img/bgs-02.webp')
-		background-size contain
-		// background-repeat none
-		background-position center
 
 	h1
 		margin-bottom 1.5rem
