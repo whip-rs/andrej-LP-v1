@@ -204,9 +204,23 @@
 	function nextItem() { updateActive(currentIndex + 1) }
 	function prevItem() { updateActive(currentIndex - 1) }
 
+	// scheduleIdle: schedule work on idle or via timeout as a fallback
+	const scheduleIdle = (fn: () => void) => {
+		if (typeof (window as any).requestIdleCallback !== 'undefined') {
+			(window as any).requestIdleCallback(fn, { timeout: 500 })
+		} else {
+			setTimeout(fn, 200)
+		}
+	}
+
 	function resetInterval() {
 		if (intervalId) clearInterval(intervalId)
-		intervalId = setInterval(() => nextItem(), 4000)
+
+		scheduleIdle(() => {
+			intervalId = setInterval(() => nextItem(), 4000)
+			// Desktop hover behavior should also be scheduled (so it doesn't block initial render)
+			if (typeof window !== 'undefined') scheduleIdle(() => setupDesktopHover())
+		})
 	}
 
 	/* -----------------------------------------
@@ -263,34 +277,53 @@
 	/* -----------------------------------------
 		 DESKTOP: HOVER INDICATORS TO JUMP
 	----------------------------------------- */
-	function setupDesktopHover() {
+	// Setup desktop hover behavior; returns a cleanup function for event handlers
+	let hoverCleanup: (() => void) | null = null
+	function setupDesktopHover(): (() => void) | undefined {
 		const root = carousel.value
 		if (!root) return
 
-		const indicator = root.querySelector('.indicator')
+		const indicator = root.querySelector<HTMLElement>('.indicator')
 		const circles = Array.from(root.querySelectorAll<HTMLElement>('.circle'))
 
 		if (!indicator) return
 
+		// Remove previous listeners if any
+		if (hoverCleanup) {
+			hoverCleanup()
+			hoverCleanup = null
+		}
+
+		const handlers: Array<() => void> = []
+
 		// Pause autoplay when hovering over the indicator strip
-		indicator.addEventListener('mouseenter', () => {
+		const onIndicatorEnter = () => {
 			if (intervalId) {
 				clearInterval(intervalId)
 				intervalId = null
 			}
-		})
+		}
+		indicator.addEventListener('mouseenter', onIndicatorEnter)
+		handlers.push(() => indicator.removeEventListener('mouseenter', onIndicatorEnter))
 
 		// Resume autoplay after leaving indicator area
-		indicator.addEventListener('mouseleave', () => {
+		const onIndicatorLeave = () => {
 			if (!intervalId) resetInterval()
-		})
+		}
+		indicator.addEventListener('mouseleave', onIndicatorLeave)
+		handlers.push(() => indicator.removeEventListener('mouseleave', onIndicatorLeave))
 
 		// Hover a circle → jump instantly
+		const circleHandlers: Array<() => void> = []
 		circles.forEach((circle, index) => {
-			circle.addEventListener('mouseenter', () => {
-				updateActive(index)
-			})
+			const handler = () => updateActive(index)
+			circle.addEventListener('mouseenter', handler)
+			circleHandlers.push(() => circle.removeEventListener('mouseenter', handler))
 		})
+		handlers.push(() => circleHandlers.forEach(h => h()))
+
+		hoverCleanup = () => handlers.forEach(h => h())
+		return hoverCleanup
 	}
 
 	/* -----------------------------------------
@@ -307,8 +340,8 @@
 		root.addEventListener('touchmove', onTouchMove, { passive: true })
 		root.addEventListener('touchend', onTouchEnd)
 
-		// Desktop hover behavior
-		setupDesktopHover()
+		// Schedule desktop hover behavior during idle time (don't block LCP/initial input)
+		scheduleIdle(() => { setupDesktopHover() })
 	})
 
 	onUnmounted(() => {
@@ -320,6 +353,11 @@
 		root.removeEventListener('touchstart', onTouchStart)
 		root.removeEventListener('touchmove', onTouchMove)
 		root.removeEventListener('touchend', onTouchEnd)
+		// cleanup any hover listeners
+		if (hoverCleanup) {
+			hoverCleanup()
+			hoverCleanup = null
+		}
 	})
 
 	</script>

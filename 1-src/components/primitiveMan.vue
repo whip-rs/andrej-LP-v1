@@ -253,7 +253,14 @@ const onResize = () => {
 }
 
 onMounted(() => {
-	measure()
+	// Defer initial measurement to idle time to avoid blocking main thread during LCP
+	const schedule = (fn) => {
+		if (typeof requestIdleCallback !== 'undefined') requestIdleCallback(fn, { timeout: 500 })
+		else requestAnimationFrame(fn)
+	}
+	schedule(() => {
+		measure()
+	})
 	window.addEventListener('resize', onResize)
 })
 

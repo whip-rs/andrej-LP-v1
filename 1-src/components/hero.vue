@@ -8,7 +8,7 @@
 				picture
 					source(media="(min-width: 1025px)" :srcset="desktopSrcset" sizes="(min-width:1025px) 720px, 50vw")
 					source(media="(max-width: 1024px)" :srcset="mobileSrcset" sizes="(max-width:1024px) 100vw")
-					img(:src="defaultImg" :alt="desktopAlt" loading="eager" decoding="async" fetchpriority="high" importance="high" class="deep-shadow" style="max-width: 100%; max-height: 75vh; object-fit: contain; aspect-ratio: auto;")
+					img(:src="defaultImg" :alt="desktopAlt" loading="eager" fetchpriority="high" decoding="async" class="deep-shadow" style="max-width: 100%; max-height: 75vh; object-fit: contain; aspect-ratio: auto;")
 
 			.txt-and-buttons
 				.text
