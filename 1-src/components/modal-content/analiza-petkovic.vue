@@ -35,9 +35,28 @@
 <style lang="stylus" scoped>
 	.block
 		background-color black
-		box-shadow inset 0 0 1rem 1rem black
 		position: relative;
-		z-index: -1;
+		z-index: 0;
+
+		// top/bottom fade overlays to keep visual gradient while
+		// preserving pointer events on content beneath
+		&::before,
+		&::after
+			content ''
+			position absolute
+			left 0
+			right 0
+			pointer-events none
+
+		&::before
+			top 0
+			height 3rem
+			background linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))
+
+		&::after
+			bottom 0
+			height 3rem
+			background linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0))
 	h2
 		font-size 1.5rem
 		line-height 1.25
@@ -78,6 +97,15 @@
 			margin-bottom 0
 		p.micro.gray
 			margin-bottom 1rem
+
+/* Ensure links inside block are clickable even if surrounding context has stacking/overlay */
+.block a,
+.block a.link,
+.block a.link.gray,
+.block .link
+	pointer-events auto
+	position relative
+	z-index 1
 		hr
 			display none
 

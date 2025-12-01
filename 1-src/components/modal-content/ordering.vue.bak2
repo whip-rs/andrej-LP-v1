@@ -2,34 +2,53 @@
 
 	.block.ordering-form
 
-		form(@submit.prevent="handleSubmit")
+		form(action="https://formspree.io/f/xqarpayy" method="POST" novalidate @submit.prevent="handleSubmit")
 
 			h1 Направи поруџбину
 
-			.form-group
-				label(for="email" :class="{ error: errors.email }") е-mail:
-				input#email(
-					v-model="formData.email"
-					type="email"
-					required
-					placeholder=""
-					autocomplete="email"
-					tabindex="1"
-					:class="{ error: errors.email }"
-					@input="formatEmail"
-					@blur="errors.email && validateEmail()"
-				)
-				//- p.micro *Потврда и статуси пошиљке биће слати овде.
+			.form-group.contact
+				.email
+					label(for="email" :class="{ error: errors.email }") е-mail:
+					input#email(
+						ref="emailInput"
+						name="email"
+						v-model="formData.email"
+						type="email"
+						required
+						placeholder=""
+						autocomplete="email"
+						tabindex="1"
+						:class="{ error: errors.email }"
+						@input="formatEmail"
+						@blur="errors.email && validateEmail()"
+					)
+					//- p.micro *Потврда и статуси пошиљке биће слати овде.
+
+				.phone
+					label(for="phone" :class="{ error: errors.phone }") Телефон:
+					input#phone(
+						name="phone"
+						v-model="formData.phone"
+						type="tel"
+						required
+						placeholder=""
+						autocomplete="tel"
+						tabindex="2"
+						:class="{ error: errors.phone }"
+						@input="formatPhone"
+						@blur="errors.phone && validatePhone()"
+					)
 
 			.form-group
 				label(for="fullname" :class="{ error: errors.fullname }") Име и Презиме:
 				input#fullname(
+					name="fullname"
 					v-model="formData.fullname"
 					type="text"
 					required
 					placeholder=""
 					autocomplete="name"
-					tabindex="2"
+					tabindex="3"
 					:class="{ error: errors.fullname }"
 					@input="formatFullname"
 					@blur="errors.fullname && validateFullname()"
@@ -37,23 +56,10 @@
 			
 			.form-group.address
 
-				.city
-					label(for="city" :class="{ error: errors.city }") Град:
-					input#city(
-						v-model="formData.city"
-						type="text"
-						required
-						placeholder=""
-						autocomplete="address-level2"
-						tabindex="3"
-						:class="{ error: errors.city }"
-						@input="formatCity"
-						@blur="errors.city && validateCity()"
-					)
-
 				.postal-no
 					label(for="pobox" :class="{ error: errors.pobox }") Поштански број:
 					input#pobox(
+							name="postal_code"
 							v-model="formData.pobox"
 							type="text"
 							inputmode="numeric"
@@ -62,15 +68,30 @@
 							required
 							placeholder=""
 							autocomplete="postal-code"
-							tabindex="4"
+							tabindex="3"
 							:class="{ error: errors.pobox }"
 							@input="formatPostalCode"
 							@blur="errors.pobox && validatePobox()"
 						)
+				.city
+					label(for="city" :class="{ error: errors.city }") Град:
+					input#city(
+						name="city"
+						v-model="formData.city"
+						type="text"
+						required
+						placeholder=""
+						autocomplete="address-level2"
+						tabindex="4"
+						:class="{ error: errors.city }"
+						@input="formatCity"
+						@blur="errors.city && validateCity()"
+					)
 
 			.form-group
 				label(for="address" :class="{ error: errors.address }") Адреса:
 				input#address(
+					name="address"
 					v-model="formData.address"
 					type="text"
 					required
@@ -81,45 +102,63 @@
 					@blur="errors.address && validateAddress()"
 				)
 			
-			.form-group
-				label(for="phone" :class="{ error: errors.phone }") Телефон:
-				input#phone(
-					v-model="formData.phone"
-					type="tel"
-					required
-					placeholder=""
-					autocomplete="tel"
-					tabindex="6"
-					:class="{ error: errors.phone }"
-					@input="formatPhone"
-					@blur="errors.phone && validatePhone()"
-				)
+				//- .form-group
+				//- 	label(for="phone" :class="{ error: errors.phone }") Телефон:
+				//- 	input#phone(
+				//- 		v-model="formData.phone"
+				//- 		type="tel"
+				//- 		required
+				//- 		placeholder=""
+				//- 		autocomplete="tel"
+				//- 		tabindex="6"
+				//- 		:class="{ error: errors.phone }"
+				//- 		@input="formatPhone"
+				//- 		@blur="errors.phone && validatePhone()"
+				//- 	)
 
 			.form-group.book-price
 				.dropdown
-					label(for="book") Садржај наруџбине:
+					label(for="book" @click.prevent="openBookPicker") Садржај наруџбине:
 					select#book(
+						ref="bookSelect"
+						name="book"
 						v-model="formData.book"
 						required
 						tabindex="7"
 					)
-						option(value="1-2") Књигa 1+2
+						option(value="1-2") Књиге 1 и 2 (спојено)
 						option(value="3") Књига 3
 						option(value="1-3") Комплет
+					// Hidden derived fields
+					input(type="hidden" name="price" :value="currentPrice")
+					input(type="hidden" name="_subject" value="Нова поруџбина")
+					// Honeypot anti-spam field (reactive; bots filling quickly get blocked)
+					input(type="text" name="hp_field" v-model="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;" )
 
+				.image-display
+					img(:src="currentImage" :alt="currentImageAlt")
 
-			.price-display
-				div.price-label Укупно при преузимању:
-				.price-value#cost {{ currentPrice }}
-
-
+				.price-display
+					.price-label Укупно при преузимању:
+					.price-value#cost {{ currentPrice }}
 
 			.form-actions
-				a.btn.fill(role="button" aria-label="Пошаљи поруџбину" @click="handleSubmit" @keydown.enter.prevent="handleSubmit" @keydown.space.prevent="handleSubmit" tabindex="8") Пошаљи поруџбину<span>❯</span>
+				button.btn.fill(
+					type="submit"
+					:disabled="isSubmitting"
+					aria-label="Пошаљи поруџбину"
+					tabindex="8"
+					:class="{ sending: isSubmitting, sent: submissionSuccess }"
+				)
+					span.label(v-if="!isSubmitting && !submissionSuccess") Пошаљи поруџбину
+					span.label(v-if="isSubmitting") Слање…
+					span.label(v-if="submissionSuccess") Послато
+					span.indicator(v-if="!submissionSuccess && !isSubmitting") ❯
+					span.indicator(v-if="submissionSuccess") ✓
+					span.spinner(v-if="isSubmitting")
 
 			.validation.tr
 				p.micro(:class="{ error: validationMessage !== defaultMessage }") {{ validationMessage }}
-				p.micro За интернационалне поруџбине, <a href="mailto:porudzbine@adena.rs">контакт</a>.
 
 			//- .messages
 				//- ul
@@ -139,7 +178,7 @@
 			color white
 			border-bottom-color white
 
-	a.btn.fill
+	a.btn.fill, button.btn.fill
 		margin-top .75rem !important
 
 	.error
@@ -173,16 +212,14 @@
 	// 	margin-top 1rem
 	// 	margin-bottom 1rem
 
-	.form-group, #cost
+	.form-group, #cost, select, option
 		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
-
 
 	.form-group
 		display flex
 		flex-direction column
 		margin-bottom .75rem
 
-		
 	label, .price-label
 		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 		font-size .675rem
@@ -194,6 +231,10 @@
 		margin-bottom 4px
 		cursor: pointer
 		width: fit-content
+		
+	.price-label
+		pointer-events none
+		cursor inherit
 		
 	input, select, label
 		overflow: hidden;
@@ -231,15 +272,15 @@
 		background: black;
 		color: white;
 
-	select
-		cursor pointer
+	select, option
+		cursor pointer !important
 
-	.address
+	.address, .contact
 		display flex
 		flex-direction row
 		gap 1rem
 
-	.city, .postal-no
+	.city, .postal-no, .phone, .email
 		display: flex;
 		flex-direction: column;
 		input
@@ -248,32 +289,13 @@
 	 .postal-no
 		max-width: calc(40% - .5rem)
 		
+	.email, .phone
+		max-width: auto
+		flex 1
+
 	.city
 		flex 1
 		max-width: 100%
-
-	.dropdown
-		display flex
-		flex-direction column
-		flex 2
-		
-	.book-price
-		flex-direction row
-		gap 1rem
-		select
-			cursor pointer
-
-	.price-display
-		// border-left 1px solid #444
-		// padding-left .75rem
-		// margin-left .75rem
-		label
-			cursor inherit
-			margin-top auto
-			margin-bottom auto
-		.price-label
-			color white
-			cursor inherit
 			
 	.price-value
 		line-height 1
@@ -284,29 +306,71 @@
 		// text-align: right;
 		font-variant-caps: small-caps
 		
-
-	.form-actions
-		
-		a.btn.fill
+	.form-actions	
+		.btn.fill
 			width 100%
 			display flex
+			align-items center
+			justify-content space-between
+			gap .5rem
 			margin-top: 1rem;
 			cursor pointer
+			background: linear-gradient(transparent, transparent) padding-box, linear-gradient(to top right, #a7885b33, transparent) border-box
+			color #a7885b
+			border 1px solid rgba(167, 136, 91, 0.502)
+			font-weight 600
+			position relative
+			letter-spacing: 0.075rem
 			span
 				transition .3s
-			&:hover
-				span
+			&:hover:not(.sending):not(.sent)
+				color black
+				border-color #a7885b3
+				background-color #a7885b
+				span.indicator
 					margin-right .5rem
 			&:focus
-				// background-color #a7885b
-				// color black
+				outline none
 				box-shadow: inset 0 0 .05rem .0725rem black, 0 0 8px 0 #a7885b80
-				span
+				span.indicator
 					margin-right .5rem
+			&.sending
+				background-color #333
+				border-color #333
+				color #aaa
+				cursor progress
+			&.sent
+				// Green hue with similar saturation/lightness
+				background-color #66a659
+				border-color #66a659
+				color #fff
+				box-shadow 0 0 0 .05rem #0a0, 0 0 8px #66a65980
+				span.indicator
+					margin-right .25rem
+			.spinner
+				width 16px
+				height 16px
+				border 2px solid #666
+				border-top-color #ccc
+				border-radius 50%
+				animation spin 0.8s linear infinite
+
+@keyframes spin
+	0%
+		transform rotate(0deg)
+	100%
+		transform rotate(360deg)
+
 
 	@media screen and (min-width: 320px)
 	
 		.block.ordering-form
+			padding 1rem
+			// Force fallback to ensure no other global rules override padding
+			padding-left 1rem !important
+			padding-right 1rem !important
+			padding-top 1rem !important
+			padding-bottom 1rem !important
 			padding 1rem
 			
 		h1
@@ -346,11 +410,96 @@
 			height 44px
 			padding 0.65rem
 
+	.book-price
+		display grid
+		grid-template-columns 1fr auto
+		grid-template-rows auto auto
+		// gap 0.75rem
+		// margin-bottom 0.75rem
+		
+		.dropdown
+			grid-column 1
+			grid-row 1
+			display flex
+			flex-direction column
+			margin-bottom 0.75rem;
+			
+		.price-display
+			grid-column 1
+			grid-row 2
+			display flex
+			flex-direction column
+			justify-content flex-end
+			border-left 1px solid #333
+			// border-left 1px solid #a7885b
+			padding-left .75rem
+			margin-left .75rem
+			line-clamp value
+		
+		.image-display
+			grid-column 2
+			grid-row 1 / 3
+			aspect-ratio 1
+			height 100%
+			max-height: 108px;
+			margin-left 1rem
+			// margin-right .5rem
+			
+			img
+				object-fit cover
+				max-height 127px
+
+	@media screen and (max-width: 360px)
+		.form-group.book-price
+			// Force grid layout, override any conflicting display settings
+			display grid !important
+			grid-template-columns 1fr auto !important
+			grid-template-rows auto auto !important
+			.dropdown
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
 
 	</style>
 <!--  -->
 <script setup lang="ts">
-	import { ref, computed } from 'vue'
+	import { ref, computed, onMounted, nextTick, watch } from 'vue'
+	
+	// Import images so Vite can process them
+	import liber12Img from '../../assets/img/liber-1-2.webp'
+	import liber3Img from '../../assets/img/liber-3.webp'
+	import liberKompletImg from '../../assets/img/liber-komplet.webp'
+	
+	interface Props {
+		modalData?: string | null
+	}
+	
+	const props = withDefaults(defineProps<Props>(), {
+		modalData: null
+	})
+	
+	const emailInput = ref<HTMLInputElement | null>(null)
+	const bookSelect = ref<HTMLSelectElement | null>(null)
+
+	// Programmatically open/focus the book select when its label is clicked
+	const openBookPicker = () => {
+		if (!bookSelect.value) return
+		// Focus first (universal)
+		bookSelect.value.focus()
+		// Try native showPicker (Chromium browsers)
+		const picker = (bookSelect.value as any).showPicker
+		if (typeof picker === 'function') {
+			try { picker.call(bookSelect.value) } catch (_) { /* ignore */ }
+		} else {
+			// Fallback: dispatch a key event that commonly opens selects
+			try {
+				const evt = new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true })
+				bookSelect.value.dispatchEvent(evt)
+			} catch (_) { /* noop */ }
+		}
+	}
 	
 	const formData = ref({
 		email: '',
@@ -361,6 +510,13 @@
 		pobox: '',
 		phone: ''
 	})
+	
+	// Watch for modalData changes and update book selection
+	watch(() => props.modalData, (newData) => {
+		if (newData && ['1-2', '3', '1-3'].includes(newData)) {
+			formData.value.book = newData
+		}
+	}, { immediate: true })
 	
 	const errors = ref({
 		email: false,
@@ -382,6 +538,24 @@
 	
 	const currentPrice = computed(() => {
 		return prices[formData.value.book]
+	})
+
+	// Image sources mapped to book selection
+	const imageSources: Record<string, string> = {
+		'1-2': liber12Img,
+		'3': liber3Img,
+		'1-3': liberKompletImg
+	}
+
+	const currentImage = computed(() => imageSources[formData.value.book] || imageSources['1-2'])
+
+	const currentImageAlt = computed(() => {
+		switch (formData.value.book) {
+			case '1-2': return 'Chronica Inqvistoris књиге I и II';
+			case '3': return 'Chronica Inqvistoris књига III';
+			case '1-3': return 'Chronica Inqvistoris комплет';
+			default: return 'Chronica Inqvistoris';
+		}
 	})
 	
 	const formatEmail = (event) => {
@@ -590,15 +764,87 @@
 		// If errorCount === 1, the specific validation message should already be set
 	}
 	
-	const handleSubmit = () => {
+	// Submission state
+	const isSubmitting = ref(false)
+	const submissionError = ref<string | null>(null)
+	const submissionSuccess = ref(false)
+	// Honeypot reactive value (should remain empty for humans)
+	const honeypot = ref('')
+
+	// Honeypot bypass disabled — enforce honeypot on all environments
+	const isHoneypotBypassed = () => false
+
+	const handleSubmit = async () => {
 		// Validate all fields before submitting
 		if (!validateAll()) {
 			return // Stop if validation fails
 		}
-		
-		// TODO: Implement email sending functionality
-		console.log('Form submitted:', formData.value)
-		alert('Наруџбина је примљена! (Функција слања е-поште ће бити имплементирана касније)')
-	}
-	</script>
 
+		// Honeypot check (skip in preview/local environments)
+		if (!isHoneypotBypassed() && honeypot.value.trim() !== '') {
+			console.warn('Honeypot triggered; aborting submission.')
+			return
+		} else if (isHoneypotBypassed()) {
+			console.info('Honeypot bypass active (staging/local).')
+		}
+
+		isSubmitting.value = true
+		submissionError.value = null
+		validationMessage.value = 'Слање наруџбине…'
+
+		try {
+			const fd = new FormData()
+			fd.append('email', formData.value.email)
+			fd.append('phone', formData.value.phone)
+			fd.append('fullname', formData.value.fullname)
+			fd.append('address', formData.value.address)
+			fd.append('city', formData.value.city)
+			fd.append('postal_code', formData.value.pobox)
+			fd.append('book', formData.value.book)
+			fd.append('price', currentPrice.value)
+			fd.append('_subject', 'Нова поруџбина')
+			// Optional redirect after success (uncomment & create page)
+			// fd.append('_next', '/hvala.html')
+
+			const resp = await fetch('https://formspree.io/f/xqarpayy', {
+				method: 'POST',
+				body: fd,
+				headers: {
+					'Accept': 'application/json'
+				}
+			})
+
+			if (resp.ok) {
+				validationMessage.value = 'Наруџбина је успешно послата. Проверите е-mail за потврду.'
+				submissionSuccess.value = true
+				// Reset only non-identifying fields (keep email so user sees what they entered)
+				formData.value.book = '1-2'
+				formData.value.fullname = ''
+				formData.value.address = ''
+				formData.value.city = ''
+				formData.value.pobox = ''
+				formData.value.phone = ''
+				// Auto-revert success state after delay
+				setTimeout(() => { submissionSuccess.value = false }, 5000)
+			} else {
+				const data = await resp.json().catch(() => null)
+				submissionError.value = data && data.errors ? data.errors.map((e: any) => e.message).join(' | ') : 'Грешка при слању. Покушајте касније.'
+				validationMessage.value = submissionError.value
+			}
+		} catch (err: any) {
+			submissionError.value = 'Неочекивана грешка. Проверите везу.'
+			validationMessage.value = submissionError.value
+			console.error('Submission error', err)
+		} finally {
+			isSubmitting.value = false
+			// Re-run error state check (might reset styling if all cleared)
+			checkErrorState()
+		}
+	}
+	
+	// Auto-focus email field when component mounts
+	onMounted(async () => {
+		await nextTick()
+		emailInput.value?.focus()
+	})
+	</script>
