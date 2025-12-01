@@ -110,7 +110,7 @@
 		.text
 			gap 1rem
 		h1
-			font-size 6.75vw
+			font-size 5.5vw
 			line-height 1
 		h2
 			line-height 1.2
@@ -217,9 +217,8 @@
 		h1
 			font-size 4.25vh
 			margin-bottom 0
-							max-height 75vh
-							max-width 720px
-			font-size 2.5vh
+			max-height 75vh
+			max-width 720px
 		.cont
 			margin-bottom auto
 			margin-top -12vh
@@ -227,13 +226,16 @@
 		.ico
 			max-width 5rem
 			
-	@media screen and (min-width: 1366px) and (min-height: 1024px)
+	@media screen and (min-width: 1366px) and (min-height: 890px)
 		.hero
 			padding-top 2rem
 			padding-bottom 2rem
 			background-repeat: no-repeat;
 			background-position: 0 0px;
 			transition .3s
+		h1
+			font-size 4.25vh
+				
 			
 	</style>
 <!--	-->
