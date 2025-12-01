@@ -41,12 +41,13 @@
 	
 	import analize from './components/analize.vue'
 	import uvod from './components/uvod.vue'
-	import about from './components/about.vue'
-	import world from './components/world.vue'
-	import testimonials from './components/testimonials.vue'
-	import order from './components/order.vue'
-	import primitiveMan from './components/primitiveMan.vue'
-	import satisfactionGuarantee from './components/satisfactionGuarantee.vue'
+	const about = defineAsyncComponent(() => import('./components/about.vue'))
+	const world = defineAsyncComponent(() => import('./components/world.vue'))
+	import { defineAsyncComponent } from 'vue'
+	const testimonials = defineAsyncComponent(() => import('./components/testimonials.vue'))
+	const order = defineAsyncComponent(() => import('./components/order.vue'))
+	const primitiveMan = defineAsyncComponent(() => import('./components/primitiveMan.vue'))
+	const satisfactionGuarantee = defineAsyncComponent(() => import('./components/satisfactionGuarantee.vue'))
 	import footah from './components/footer.vue'
 	
 	// Modal state management

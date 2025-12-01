@@ -6,7 +6,7 @@
 				icoClose.closer
 		.relative
 			.absolute.seal(:class="{ hide: !showSeal }")
-				img(src="/assets/img/seal.webp")
+				img(src="/assets/img/seal.webp" alt="Знак" loading="lazy")
 		div.contents
 			component(v-if="currentComponent" :is="currentComponent" :modal-data="modalData")
 	.overlay(@click="handleClose")

@@ -35,7 +35,7 @@ a.btn.fill
 		transition .3s
 	&:hover
 		color black
-		border-color #a7885b3
+		border-color #a7885b
 		background-color #a7885b
 		box-shadow: inset 0 0 .05rem .0725rem black
 		span:nth-child(2)
@@ -44,6 +44,19 @@ a.btn.fill
 		background-color black
 		color: #a88a5d80
 		border-color #a7885b33
+
+	&.sending
+		background-color #333
+		border 1px solid #333
+		color #808080
+		cursor progress
+
+	&.sent
+		background-color #a7885b
+		border 1px solid #a7885b
+		color #fff
+		pointer-events none
+		cursor inherit
 
 
 a.btn.void

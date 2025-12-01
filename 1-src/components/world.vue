@@ -5,62 +5,62 @@
 				h1.tc Унутрашњи<br>свет књиге:
 			.col.flex.wrap
 				.item
-					img(src="/assets/img/world-ico-01-adena.webp").adena
+					img(src="/assets/img/world-ico-01-adena.webp" alt="Континент Адена" loading="lazy" width="128" height="128").adena
 					h4 Континент Адена
 					p Након "Велике Катаклизме", заједно са Атлантидом, једино што је остало од познатог света, данас окружена Тамним Океаном. Богате, магичне и често застрашујуће Природе, као и необичним заоставштинама "Древних".
 			.col.flex.wrap
 				.item
-					img(src="/assets/img/world-ico-02-nature.webp")
+					img(src="/assets/img/world-ico-02-nature.webp" alt="Природа" loading="lazy" width="128" height="128")
 					h4  Природа
 					p Планински венци и реке, бујне шуме препуне отровних и необичних бића, елементала, рудименталних потентних друштава, опасних и натприродних феномена, мапирани уз летеће мостове "Древних" напајаних гасом, и артефакти разних врста.
 			.col.flex.wrap
 				.item
-					img(src="/assets/img/world-ico-03-secular-society.webp")
+					img(src="/assets/img/world-ico-03-secular-society.webp" alt="Секуларно друштво" loading="lazy" width="128" height="128")
 					h4 Секуларно друштво
 					p Политичке фракције од аристократа до технократа; академије од рударства и трговине, војних и техничких вештина, до уметности, магије и мудрости; социјално уређење по систему Касти (варни; वर्ण, varnas) у формалном индустријском државном уређењу.
 			.col.flex.wrap
 				.item
-					img(src="/assets/img/world-ico-04-longin.webp")
+					img(src="/assets/img/world-ico-04-longin.webp" alt="Мајор Лонгин Тиморијус" loading="lazy" width="128" height="128")
 					h4 Мајор Лонгин Тиморијус
 					p <span class="italic">"Рукопис је настао на месту на коме не важе исти закони просторно-временског континуума какви су нам познати."</span> Хронике су списи Мајора Свете Инквизиције, Лонгина Тиморијуса, у првом лицу кроз његова световна и духовна искуства.
 			.col.flex.wrap
 				.item
-					img(src="/assets/img/world-ico-05-consciousness.webp")
+					img(src="/assets/img/world-ico-05-consciousness.webp" alt="Људско искуство" loading="lazy" width="128" height="128")
 					h4 Људско искуство
 					p Лингвистика бројних цивилизација и раса. Појмови Филозофије, Љубави, Карме, Снова, Астрологије, структуре људске Психе по староегипатском моделу (IB, BA, SHUT, KA, SAH и SAI). Друштвена аномија, корупција, Зло, секс и Божанско.
 			.col.flex.wrap
 				.item
-					img(src="/assets/img/world-ico-06-church.webp")
+					img(src="/assets/img/world-ico-06-church.webp" alt="Црква Свете Тријаде" loading="lazy" width="128" height="128")
 					h4 Црква Свете Тријаде
 					p Црква Спаситеља Емануила са бројним, међусобно конфликтним редовима, сваки са засебном историјом и темпераментом – од ригидно светлих до упуштаоца у додир с Тамом – и агентима Свете Инквизиције против демонске корупције.
 			.col.flex.wrap
 				.item
-					img(src="/assets/img/world-ico-07-corruption.webp")
+					img(src="/assets/img/world-ico-07-corruption.webp" alt="Корупција" loading="lazy" width="128" height="128")
 					h4 Корупција
 					p Након Велике Катаклизме и два велика Демонска Рата у којима је за длаку избегла комплетно уништење, човечанство се и даље бори корупције у политичким и духовним центрима моћи, као и изненадним пробојима сила Таме на континенту.
 			.col.flex.wrap
 				.item
-					img(src="/assets/img/world-ico-08-magic-societies.webp")
+					img(src="/assets/img/world-ico-08-magic-societies.webp" alt="Магијска друштва" loading="lazy" width="128" height="128")
 					h4 Магијска друштва
 					p Алхемија, скривена и забрањена знања, Некроси и некрофауна, вампири, вештице, Магије Крви и Хаоса, читаоци Снова, Академија Магије, дивља магијска племена, древни ритуали, тајни артефакти, портали у непознате светове.
 			.col.flex.wrap
 				.item
-					img(src="/assets/img/world-ico-09-unknown-worlds.webp")
+					img(src="/assets/img/world-ico-09-unknown-worlds.webp" alt="Непознати светови" loading="lazy" width="128" height="128")
 					h4 Непознати светови
 					p <span class="italic">"Архонти, загонетна створења слична архангелима са специфичном врстом самосталности и створена са сврхом да чувају Седам закона стварања".</span> Мистериозни ентитети, посебне капије, елементалне силе и недокучени домени Универзума.
 			.col.flex.wrap
 				.item
-					img(src="/assets/img/world-ico-10-veil.webp")
+					img(src="/assets/img/world-ico-10-veil.webp" alt="Вео" loading="lazy" width="128" height="128")
 					h4 Вео
 					p Дели свет људи од безбројних непознатих димензија, и служи као баријера између уређеног Космоса и светова Хаоса, демона и њиховог Црног Сунца. Одмах иза њега су Интерзона и <span class="italic">Arva Desolate</span>, такозване "Пустаре иза Вела". Може, и често бива оштећен.
 			.col.flex.wrap
 				.item
-					img(src="/assets/img/world-ico-11-demon-world.webp")
+					img(src="/assets/img/world-ico-11-demon-world.webp" alt="Свет демона" loading="lazy" width="128" height="128")
 					h4 Свет демона
 					p Под хладним, сребрнкастим зрацима Црног Сунца, увлачен његовом снажном ентропијом која у свом средишту ломи саму материју, лежи "Пакао", подручје власти демонских принчева и њихових поданика. Патња људи су њихова храна и музика. 
 			.col.flex.wrap
 				.item
-					img(src="/assets/img/world-ico-12-cosmos.webp")
+					img(src="/assets/img/world-ico-12-cosmos.webp" alt="Универзум" loading="lazy" width="128" height="128")
 					h4 Универзум
 					p Генеза и структура Универзума су и дан данас предмет дебата и многих теорија тек делимично усклађених у колективном искуству. Иза њега су безоблично Ништавило, Интерзона у многе суб-димензије Омниверзума, Хаос, и Пустаре Црног Сунца.
 			.col-12

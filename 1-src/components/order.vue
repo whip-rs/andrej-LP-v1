@@ -6,7 +6,7 @@
 			.cards
 
 				.card
-					img(src="/assets/img/liber-1-2.webp")
+					img(src="/assets/img/liber-1-2.webp" srcset="/assets/img/liber-1-2.webp 480w, /assets/img/liber-1-2.webp 800w, /assets/img/liber-1-2.webp 1600w" sizes="127px" alt="Chronica Inqvisitoris књиге I и II" width="127" height="127" loading="lazy")
 					h4 Књиге 1 и 2 (спојено):
 					ul
 						li Тврде корице са кошуљицом
@@ -15,7 +15,7 @@
 						li.cena 3300 рсд
 					a.btn.fill(@click="$emit('open-modal', 'ordering-form', '1-2')") Наручи књиге 1 и 2 (спојено) <span>❯</span>
 				.card
-					img(src="/assets/img/liber-3.webp")
+					img(src="/assets/img/liber-3.webp" srcset="/assets/img/liber-3.webp 480w, /assets/img/liber-3.webp 800w" alt="Chronica Inqvisitoris књига III" width="127" height="127" loading="lazy")
 					h4 Књига 3:
 					ul
 						li Тврде корице са кошуљицом
@@ -23,7 +23,7 @@
 						li.cena 2800 рсд
 					a.btn.fill(@click="$emit('open-modal', 'ordering-form', '3')") Наручи књигу 3<span>❯</span>
 				.card
-					img(src="/assets/img/liber-komplet.webp")
+					img(src="/assets/img/liber-komplet.webp" srcset="/assets/img/liber-komplet.webp 480w, /assets/img/liber-komplet.webp 800w" sizes="(max-width:768px) 480px, 800px" alt="Chronica Inqvisitoris комплет" width="127" height="127" loading="lazy")
 					h4 Комплет:
 					ul
 						li Тврде корице са кошуљицом
@@ -50,7 +50,6 @@
 		background-image url('@/assets/img/stone-texture-01.webp')
 		background-size cover
 		background-position center
-
 
 	a
 		color #a7885b
@@ -124,12 +123,18 @@
 	h4
 		padding-bottom .5rem
 
-	@media screen and (max-width $lg - 1px)
+	@media screen and (max-width: 768px)
 		.col-lg-4
 			margin: 0.5rem 1rem
 			border: 1px solid #333
 			background-color: hsl(0 0% 8% / 1)
 			border-radius: 0.5rem
+		.cards
+			flex-direction column 
+			gap 1rem
+		.card
+			flex: 0 !important
+			width: 100% !important
 
 	</style>
 

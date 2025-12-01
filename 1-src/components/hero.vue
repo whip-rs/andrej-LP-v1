@@ -5,8 +5,10 @@
 	section.hero
 		.wrp
 			.hero-img
-				img(src="/assets/img/liber-1-2-mobile.webp").deep-shadow.mobile
-				img(src="/assets/img/liber-1-2-desktop.webp").deep-shadow.desktop
+				picture
+					source(media="(min-width: 1025px)" :srcset="desktopSrcset" sizes="(min-width:1025px) 720px, 50vw")
+					source(media="(max-width: 1024px)" :srcset="mobileSrcset" sizes="(max-width:1024px) 100vw")
+					img(:src="defaultImg" :alt="desktopAlt" loading="eager" decoding="async" fetchpriority="high" importance="high" class="deep-shadow" style="max-width: 100%; max-height: 75vh; object-fit: contain; aspect-ratio: auto;")
 
 			.txt-and-buttons
 				.text
@@ -61,6 +63,10 @@
 			display: flex;
 			img
 				margin: auto;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				aspect-ratio: 16/9;
 		// .mobile
 		.desktop
 			display none
@@ -99,7 +105,8 @@
 		.hero
 			.hero-img
 				img
-					max-height 640px
+						max-height 640px
+						max-width 720px
 		.text
 			gap 1rem
 		h1
@@ -120,7 +127,8 @@
 		.hero
 			.hero-img
 				img
-					max-height 640px
+						max-height 640px
+						max-width 720px
 		.buttons
 			display flex
 			flex-direction row
@@ -141,6 +149,7 @@
 			padding-bottom 1rem
 		.wrp
 			display flex
+			align-items center
 			flex-wrap wrap
 			gap 1rem
 			max-width: 1440px
@@ -169,8 +178,8 @@
 		.wrp
 			z-index 1
 			// order 4
-		.cont
-			margin-top -2.75rem
+			.cont
+				margin-top -8vh
 			margin-bottom 1rem
 		.ribbons
 			order 5
@@ -208,11 +217,12 @@
 		h1
 			font-size 4.25vh
 			margin-bottom 0
-		h2
+							max-height 75vh
+							max-width 720px
 			font-size 2.5vh
 		.cont
 			margin-bottom auto
-			margin-top -13vh
+			margin-top -12vh
 			// position relative
 		.ico
 			max-width 5rem
@@ -228,9 +238,20 @@
 	</style>
 <!--	-->
 <script setup lang="ts">
-	import ribbons from '/components/ribbons.vue'
-	import infoStripe from '/components/infoStripe.vue'
-	import testimonialCarousel from '/components/testimonialCarousel.vue'
+	import ribbons from './ribbons.vue'
+	import infoStripe from './infoStripe.vue'
+	import testimonialCarousel from './testimonialCarousel.vue'
+	// Import hero images so Vite can manage them and allow proper hashing
+	import liberDesktop from '@/assets/img/liber-1-2-desktop.webp'
+	import liberMobile from '@/assets/img/liber-1-2-mobile.webp'
+	import liberDefault from '@/assets/img/liber-1-2.webp'
+
+	const desktopImg = liberDesktop
+	const mobileImg = liberMobile
+	const defaultImg = liberDefault
+	const desktopAlt = 'Chronica Inqvisitoris књиге 1 и 2'
+	const desktopSrcset = `${liberDesktop} 1600w, ${liberDefault} 800w`
+	const mobileSrcset = `${liberMobile} 800w, ${liberDefault} 400w`
 
 	</script>
 

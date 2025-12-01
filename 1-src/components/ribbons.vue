@@ -7,7 +7,7 @@
 				p.micro на територији Србије
 		.bit#guarantee
 			//- guarantee01.ico
-			img(src="/assets/img/seal.webp").garancija
+			img(src="/assets/img/seal.webp" alt="Жиг гаранције" loading="lazy").garancija
 			.copy
 				p Гаранција задовољствa
 				p.micro у супротном пун повраћај новца и бесплатна повратна поштарина до 30 дана од куповине
@@ -17,7 +17,7 @@
 				p Брза испорука
 				p.micro 24-48ч током радних дана
 		.bit#map
-			img(src="/assets/img/adena-mapa.webp").mapa
+			img(src="/assets/img/adena-mapa.webp" alt="Мапа Адене" loading="lazy").mapa
 			.copy
 				p Мапа континента
 				p.micro у средњем формату долази са првом књигом

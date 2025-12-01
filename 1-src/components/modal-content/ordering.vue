@@ -202,7 +202,8 @@
 			// color #bbb
 			color gray
 			&.sending
-				color gray
+				// Use hex color for more explicit control and to match requested tone
+				color #808080
 			&.sent
 				color #a7885b
 
@@ -361,12 +362,13 @@
 		&.sending
 			background-color #333
 			border 1px solid #333
-			color #aaa
+			// Use requested intermediate tone
+			color #808080
 			cursor progress
 		&.sent
-			// Green hue with similar saturation/lightness
-			background-color #66a659
-			border 1px solid #66a659
+			// Final success tone per user's request
+			background-color #a7885b
+			border 1px solid #a7885b
 			color #fff
 			box-shadow none
 			pointer-events none
@@ -822,7 +824,7 @@
 		// Lock fields immediately upon submit – they should be non-interactive indefinitely
 		locked.value = true
 
-		const MIN_SEND_MS = 2000
+	const MIN_SEND_MS = 3500
 		// Honeypot check (skip in preview/local environments)
 		if (!isHoneypotBypassed() && honeypot.value.trim() !== '') {
 			console.warn('Honeypot triggered; aborting submission.')
@@ -862,7 +864,8 @@
 			})
 
 			if (resp.ok) {
-				finalMessage = 'Очекујте e-mail с нашом мануелном потврдом током дана.'
+				// Use user-requested success message (short, consistent)
+				finalMessage = 'Примљено. Очекујте потврду особља током дана.'
 				finalSuccess = true
 			} else {
 				const data = await resp.json().catch(() => null)

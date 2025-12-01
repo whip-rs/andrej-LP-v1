@@ -3,7 +3,7 @@
 section.primitiveMan(:class="{ expanded }" :style="{ maxHeight: expanded ? expandedHeight + 'px' : '224px' }" ref="sectionEl")
 	.wrp(ref="wrpEl")
 		.image
-			img(src="/assets/img/primitive-man.webp")
+			img(src="/assets/img/primitive-man.webp" alt="Примитивни човек" loading="lazy")
 		.text
 			h1 Примитивни човек
 			.text-content
